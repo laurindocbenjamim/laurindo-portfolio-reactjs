@@ -205,13 +205,13 @@ export default function App() {
             </motion.div>
 
             <motion.div 
-              className="relative aspect-square lg:aspect-auto h-[500px] lg:h-[600px]"
+              className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="absolute inset-0 bg-neutral-900 rounded-[2rem] overflow-hidden border border-neutral-800">
+              <div className="absolute inset-0 bg-neutral-900 rounded-full overflow-hidden border-4 border-neutral-800">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImage}
