@@ -207,13 +207,99 @@ export default function App() {
             </motion.div>
 
             <motion.div 
-              className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0 z-0"
+              className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0 z-0 flex items-center justify-center"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="absolute inset-0 bg-neutral-900 rounded-full overflow-hidden border-4 border-neutral-800 shadow-[0_0_50px_-12px_rgba(14,165,233,0.3)] z-0">
+              {/* Circular Orbit Path (Desktop only) */}
+              <div className="absolute inset-0 pointer-events-none hidden lg:block">
+                 <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-dashed border-neutral-800/50 rounded-full"
+                >
+                  {/* Badge 1: Experience */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <motion.div 
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                      className="bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 whitespace-nowrap"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-brand-primary/10 text-brand-primary rounded-lg">
+                          <Terminal className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Experience</p>
+                          <p className="text-sm font-bold text-white">Full Stack Developer</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Badge 2: Open Source */}
+                  <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
+                    <motion.div 
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                      className="bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 whitespace-nowrap"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-brand-secondary/10 text-brand-secondary rounded-lg">
+                          <MessageSquare className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Open Source</p>
+                          <p className="text-sm font-bold text-white">Discord Bot Expert</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Badge 3: Data Engineer */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                    <motion.div 
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                      className="bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 whitespace-nowrap"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-blue-500/10 text-blue-500 rounded-lg">
+                          <BarChart3 className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Expertise</p>
+                          <p className="text-sm font-bold text-white">Data Engineer</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Badge 4: Biomedical */}
+                  <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2">
+                    <motion.div 
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                      className="bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 whitespace-nowrap"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-rose-500/10 text-rose-500 rounded-lg">
+                          <Activity className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Education</p>
+                          <p className="text-sm font-bold text-white">Master Biomedical Engineer</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Profile Image */}
+              <div className="relative w-full h-full bg-neutral-900 rounded-full overflow-hidden border-4 border-neutral-800 shadow-[0_0_50px_-12px_rgba(14,165,233,0.3)] z-0">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImage}
@@ -226,74 +312,21 @@ export default function App() {
                     alt="Laurindo C. Benjamim"
                   />
                 </AnimatePresence>
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
-              
-              {/* Floating badges */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-12 -right-12 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-brand-primary/10 text-brand-primary rounded-lg">
-                    <Terminal className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Experience</p>
-                    <p className="text-sm font-bold text-white">Full Stack Developer</p>
-                  </div>
-                </div>
-              </motion.div>
 
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-12 -left-12 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-brand-secondary/10 text-brand-secondary rounded-lg">
-                    <MessageSquare className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Open Source</p>
-                    <p className="text-sm font-bold text-white">Discord Bot Expert</p>
-                  </div>
+              {/* Mobile Badges (Static or simplified) */}
+              <div className="lg:hidden absolute -bottom-12 flex gap-4 w-full justify-center">
+                <div className="bg-neutral-900 p-2 rounded-xl border border-neutral-800 shadow-xl">
+                  <Terminal className="w-4 h-4 text-brand-primary" />
                 </div>
-              </motion.div>
-
-              <motion.div 
-                animate={{ x: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-1/4 -left-20 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10 hidden lg:block"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-500/10 text-blue-500 rounded-lg">
-                    <BarChart3 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Expertise</p>
-                    <p className="text-sm font-bold text-white">Data Engineer</p>
-                  </div>
+                <div className="bg-neutral-900 p-2 rounded-xl border border-neutral-800 shadow-xl">
+                  <BarChart3 className="w-4 h-4 text-blue-500" />
                 </div>
-              </motion.div>
-
-              <motion.div 
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute bottom-1/4 -right-20 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10 hidden lg:block"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-rose-500/10 text-rose-500 rounded-lg">
-                    <Activity className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Education</p>
-                    <p className="text-sm font-bold text-white">Master Biomedical Engineer</p>
-                  </div>
+                <div className="bg-neutral-900 p-2 rounded-xl border border-neutral-800 shadow-xl">
+                  <Activity className="w-4 h-4 text-rose-500" />
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
