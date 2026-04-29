@@ -15,7 +15,9 @@ import {
   Menu,
   X,
   Brain,
-  Server
+  Server,
+  Activity,
+  BarChart3
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -205,13 +207,13 @@ export default function App() {
             </motion.div>
 
             <motion.div 
-              className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0"
+              className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0 z-0"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="absolute inset-0 bg-neutral-900 rounded-full overflow-hidden border-4 border-neutral-800">
+              <div className="absolute inset-0 bg-neutral-900 rounded-full overflow-hidden border-4 border-neutral-800 shadow-[0_0_50px_-12px_rgba(14,165,233,0.3)] z-0">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImage}
@@ -232,7 +234,7 @@ export default function App() {
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 bg-neutral-900 p-4 rounded-2xl shadow-xl border border-neutral-800 z-10"
+                className="absolute -top-12 -right-12 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10"
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-brand-primary/10 text-brand-primary rounded-lg">
@@ -248,7 +250,7 @@ export default function App() {
               <motion.div 
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-6 -left-6 bg-neutral-900 p-4 rounded-2xl shadow-xl border border-neutral-800 z-10"
+                className="absolute -bottom-12 -left-12 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10"
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-brand-secondary/10 text-brand-secondary rounded-lg">
@@ -257,6 +259,38 @@ export default function App() {
                   <div>
                     <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Open Source</p>
                     <p className="text-sm font-bold text-white">Discord Bot Expert</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                animate={{ x: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-1/4 -left-20 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10 hidden lg:block"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-blue-500/10 text-blue-500 rounded-lg">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Expertise</p>
+                    <p className="text-sm font-bold text-white">Data Engineer</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                animate={{ x: [0, 10, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute bottom-1/4 -right-20 bg-neutral-900 p-4 rounded-2xl shadow-2xl border border-neutral-800 z-10 hidden lg:block"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-rose-500/10 text-rose-500 rounded-lg">
+                    <Activity className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Education</p>
+                    <p className="text-sm font-bold text-white">Master Biomedical Engineer</p>
                   </div>
                 </div>
               </motion.div>
