@@ -23,8 +23,9 @@ import {
   Tag
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import Showcases from "./components/Showcases";
+import Resume from "./components/Resume";
 
 const PROFILE_IMAGES = [
   "https://github.com/laurindocbenjamim/dev-images/blob/main/Laurindo.png?raw=true",
@@ -527,10 +528,10 @@ function Home() {
               <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Career Journey</p>
               <h2 className="text-5xl font-display font-bold text-white">Professional Experience</h2>
             </div>
-            <a href="/cv.pdf" download className="flex items-center gap-2 text-sm font-bold bg-white/5 hover:bg-white/10 px-6 py-3 rounded-xl border border-white/10 transition-all text-white">
-              Download Full CV
+            <Link to="/cv" className="flex items-center gap-2 text-sm font-bold bg-white/5 hover:bg-white/10 px-6 py-3 rounded-xl border border-white/10 transition-all text-white">
+              View & Download CV
               <ChevronRight className="w-4 h-4" />
-            </a>
+            </Link>
           </motion.div>
 
           <div className="space-y-24 relative max-w-5xl mx-auto">
@@ -870,6 +871,25 @@ function Home() {
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-primary/10 blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       </section>
 
+      {/* Footer */}
+      <footer className="py-12 border-t border-neutral-800 bg-neutral-950">
+         <div className="max-w-7xl mx-auto px-4 text-center">
+            <div className="flex justify-center gap-6 mb-8">
+              <a href="https://github.com/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://linkedin.com/in/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="mailto:laurindocbenjamim@gmail.com" className="text-neutral-500 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+            <p className="text-neutral-600 text-sm">
+              &copy; {new Date().getFullYear()} Laurindo C. Benjamim. Portions of this site are generated for portfolio demonstration.
+            </p>
+         </div>
+      </footer>
     </>
   );
 }
@@ -899,92 +919,95 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-brand-primary/20 transition-colors duration-500">
-      <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-black font-display font-bold text-lg">L</span>
-              </div>
-              <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
-            </Link>
-            
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                link.href.startsWith("/#") ? (
-                   <a 
-                    key={link.name} 
-                    href={link.href} 
-                    className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                ) : (
-                  <Link 
-                    key={link.name} 
-                    to={link.href} 
-                    className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                )
-              ))}
-              <a 
-                href="#contact" 
-                className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
-              >
-                Hire Me
-              </a>
-            </div>
-
-            <button 
-              className="md:hidden p-2 text-neutral-400 hover:text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
-            >
-              <div className="px-4 py-6 space-y-4">
+      {!["/cv", "/showcases"].includes(location.pathname) && (
+        <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <Link to="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                  <span className="text-black font-display font-bold text-lg">L</span>
+                </div>
+                <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
+              </Link>
+              
+              <div className="hidden md:flex items-center gap-8">
                 {navLinks.map((link) => (
-                   link.href.startsWith("/#") ? (
-                    <a 
+                  link.href.startsWith("/#") ? (
+                     <a 
                       key={link.name} 
-                      href={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block text-lg font-medium text-neutral-200 hover:text-white"
+                      href={link.href} 
+                      className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                     >
                       {link.name}
                     </a>
                   ) : (
                     <Link 
                       key={link.name} 
-                      to={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block text-lg font-medium text-neutral-200 hover:text-white"
+                      to={link.href} 
+                      className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                     >
                       {link.name}
                     </Link>
                   )
                 ))}
+                <a 
+                  href="#contact" 
+                  className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
+                >
+                  Hire Me
+                </a>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+
+              <button 
+                className="md:hidden p-2 text-neutral-400 hover:text-white"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X /> : <Menu />}
+              </button>
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
+              >
+                <div className="px-4 py-6 space-y-4">
+                  {navLinks.map((link) => (
+                     link.href.startsWith("/#") ? (
+                      <a 
+                        key={link.name} 
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block text-lg font-medium text-neutral-200 hover:text-white"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link 
+                        key={link.name} 
+                        to={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block text-lg font-medium text-neutral-200 hover:text-white"
+                      >
+                        {link.name}
+                      </Link>
+                    )
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      )}
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/showcases" element={<Showcases />} />
+        <Route path="/cv" element={<Resume />} />
       </Routes>
     </div>
   );

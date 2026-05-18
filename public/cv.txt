@@ -1,0 +1,61 @@
+CURRICULUM VITAE - LAURINDO C. BENJAMIM
+
+Porto, Portugal | (+351) 93-344-3506 | laurindocbenjamim@gmail.com
+LinkedIn: linkedin.com/in/laurindocbenjamim/
+GitHub: github.com/laurindocbenjamim
+
+SUMMARY
+Data Engineer with over one years of experience in designing, implementing, and managing data solutions. Proficient in ETL processes, data modeling, and data warehousing. Skilled in Python, SQL, and Azure with hands-on experience in Microsoft Fabric. Partial background in cloud platforms including Azure, AWS and GCP. Fluent in English and adept at collaborating in multicultural and multidisciplinary environments. Specializing in Python, PostgreSQL, and MongoDB, with expertise in MatLAB for advanced signal and image processing.
+
+CORE SKILLS
+- Data Engineering: ETL processes, Data modeling, Data pipelines, Microsoft Fabric, Hadoop, Hive.
+- Programming: Python, MatLAB, R, SQL, PostgreSQL, MongoDB, TypeScript, React, Java, PHP.
+- Cloud Platforms: Azure, AWS, Google Cloud Platform (GCP).
+- DevOps: CI/CD, Docker, Git, Nginx, Apache Airflow, Apache Spark.
+
+PROFESSIONAL EXPERIENCE
+
+SOFTWARE ENGINEER | FULL STACK
+Camisa10 | March 2026 – Present
+- Architecting and developing a high-performance e-commerce platform for sports apparel using FastAPI and React.js.
+- Integrating Stripe API for secure payment processing and managing complex data states with PostgreSQL, MongoDB, and Redis.
+- Managing deployment and continuous integration on Render, currently overseeing the final 30% of the production launch phase.
+
+SOFTWARE ENGINEER | FULL STACK
+Elinara Lab. | January 2026 – April 2026
+- Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.
+- Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.
+- Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite.
+
+FREELANCE DATA ENGINEER
+Various Projects | August 2024 – January 2025
+- Developed and deployed a machine learning model for stroke prediction achieving 86% accuracy leveraging R.
+- Designed and implemented ETL pipelines for waste management data from diverse sources including APIs, CSV, JSON, and SQL.
+- Engineered a Machine Learning Pipeline for Airfoil Noise Prediction using SparkML achieving 89% accuracy.
+
+PYTHON AND WEB DEVELOPMENT TRAINER
+Charkcoders, Gaia | September 2023 – December 2024
+- Trained students in Python and web development, achieving a 75-90% success rate.
+- Conducted specialized training for children and teenagers in game development and web technologies.
+
+FULL-STACK DEVELOPER
+Instituto Politécnico Privado Esperança do Lubango, Angola | January 2018 - November 2021
+- Developed a file management system using Java 10, Spring Boot MVC, Bootstrap, and Javascript.
+- Achieved a 98% requirement implementation rate and automated manual administrative processes.
+
+FULL STACK DEVELOPER
+ELT - Contas, lda - Lubango | March 2019 - September 2021
+- Developed a shopping web application using Laravel 8, Bootstrap, Javascript and JQuery.
+
+EDUCATION
+- Tecnologo em Analise e Desenvolvimento de Sistemas, AIEC Brasil (2021)
+- Bachelor’s in Computer Engineering, Universidade José Eduardo dos Santos, Angola (2017)
+
+LANGUAGES
+- Portuguese (Native)
+- English (Fluent)
+- Spanish (Basic)
+
+CERTIFICATIONS
+- IBM Data Engineering Professional Certificate
+- IBM Full Stack Software Developer Professional Certificate
