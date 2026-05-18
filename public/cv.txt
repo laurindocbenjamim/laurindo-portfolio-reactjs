@@ -17,9 +17,10 @@ PROFESSIONAL EXPERIENCE
 
 FULL STACK SOFTWARE ENGINEER (PROJECT LEAD - SPECTRALAB)
 SpectraLab | 2026 - Present
-- Architected and developed SpectraLab, a high-performance modular monolithic web application for spectroscopy analysis.
-- Implemented real-time chemometrics processing supporting multiple file formats (.csv, .sp).
-- Integrated unsupervised and supervised learning algorithms (PCA, PLS-DA, RAMAN) with interactive visualizations using Python and React.
+- Architected SpectraLab using FastAPI and Redis, a high-performance modular monolithic web application for spectroscopy analysis.
+- Implemented real-time chemometrics processing and data ingestion for .csv and .sp formats, optimized with Redis caching.
+- Developed and containerized the platform using Docker for consistent deployment on Render.
+- Integrated unsupervised and supervised learning algorithms (PCA, PLS-DA) with interactive JS visualizations.
 
 FULL STACK SOFTWARE ENGINEER
 Camisa10 | March 2026 – Present

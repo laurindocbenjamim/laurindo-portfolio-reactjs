@@ -39,8 +39,8 @@ const PROJECTS = [
     description: "High-performance chemometrics and spectroscopy analysis platform. Modular monolithic architecture supporting .csv/.sp file processing, real-time preprocessing, and PCA/PLS-DA algorithms.",
     demo: "https://ispectdata-ai.onrender.com",
     github: "https://github.com/laurindocbenjamim",
-    tags: ["Chemometrics", "Spectroscopy", "Python", "PCA", "React"],
-    type: "Data Science"
+    tags: ["FastAPI", "Redis", "Docker", "Chemometrics", "JS"],
+    type: "Data Engineering"
   },
   {
     title: "ASun Browser AI Agent",

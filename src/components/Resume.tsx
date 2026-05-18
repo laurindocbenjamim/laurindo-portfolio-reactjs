@@ -31,9 +31,10 @@ PROFESSIONAL EXPERIENCE
 
 Full Stack Software Engineer (Project Lead - SpectraLab)
 SpectraLab | 2026 - Present
-- Architected and developed SpectraLab, a high-performance modular monolithic web application for spectroscopy analysis.
-- Implemented real-time chemometrics processing supporting multiple file formats (.csv, .sp).
-- Integrated unsupervised and supervised learning algorithms (PCA, PLS-DA, RAMAN) with interactive visualizations using Python and React.
+- Architected SpectraLab using FastAPI and Redis, a high-performance modular monolithic web application for spectroscopy analysis.
+- Implemented real-time chemometrics processing and data ingestion for .csv and .sp formats, optimized with Redis caching.
+- Developed and containerized the platform using Docker for consistent deployment on Render.
+- Integrated unsupervised/supervised learning algorithms (PCA, PLS-DA) with interactive JS visualizations.
 
 Full Stack Software Engineer
 Camisa10 | March 2026 – Present
@@ -179,9 +180,10 @@ CERTIFICATIONS
               company="SpectraLab - Spectroscopy Analysis"
               date="2026 - Present"
               bullets={[
-                "Architected and developed SpectraLab, a high-performance modular monolithic web application for chemometrics processing.",
-                "Implemented real-time preprocessing and data ingestion for multiple spectroscopy file formats (.csv, .sp).",
-                "Built and integrated PCA, PLS-DA, and RAMAN algorithms returning interactive d3.js visualizations for analytical chemistry."
+                "Architected SpectraLab using FastAPI and Redis, a high-performance modular monolithic web application for chemometrics processing.",
+                "Implemented real-time preprocessing and data ingestion layers, optimized with Redis caching for large spectroscopy datasets.",
+                "Containerized the entire application ecosystem with Docker and managed automated deployment pipelines on Render.",
+                "Built and integrated PCA and PLS-DA algorithms returning interactive JS/D3 visualizations for analytical chemistry."
               ]}
             />
             <ResumeExperienceItem 
