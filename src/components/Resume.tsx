@@ -164,12 +164,22 @@ CERTIFICATIONS
           <div className="space-y-2">
             <ResumeExperienceItem 
               title="Data Engineer (Contract)"
-              company="Databricks & Data Lake Solutions"
+              company="Azure, Databricks & Big Data Solutions"
+              date="May 2025 - Oct 2025"
+              bullets={[
+                "Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.",
+                "Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of ETL jobs.",
+                "Processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical reporting."
+              ]}
+            />
+            <ResumeExperienceItem 
+              title="Data Pipeline Architect (Personal Projects)"
+              company="Real-time Streaming & Kafka"
               date="Jan 2025 - Present"
               bullets={[
-                "Architected and implemented production-grade Databricks pipelines, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.",
-                "Optimized ETL workflows using Spark on Databricks, ensuring data integrity and high availability across hybrid cloud environments.",
-                "Designed scalable data landing zones and ingestion layers, improving data accessibility for business intelligence teams."
+                "Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput ingestion and Spark Streaming for live processing.",
+                "Integrated financial APIs into a resilient Kafka cluster, ensuring zero data loss during high-volatility periods.",
+                "Developed sub-second alerting systems triggered by Spark stateful processing windows."
               ]}
             />
             <ResumeExperienceItem 

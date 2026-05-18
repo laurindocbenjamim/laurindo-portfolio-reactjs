@@ -15,11 +15,17 @@ CORE SKILLS
 
 PROFESSIONAL EXPERIENCE
 
-DATA ENGINEER (CONTRACT)
-Databricks & Data Lake Solutions | Jan 2025 - Present
-- Architected and implemented production-grade Databricks pipelines, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.
-- Optimized ETL workflows using Spark on Databricks, ensuring data integrity and high availability across hybrid cloud platforms.
-- Designed scalable data landing zones and ingestion layers, improving data accessibility for business intelligence teams.
+DATA ENGINEER (FREELANCE)
+Cloud & Big Data Solutions | May 2025 - Oct 2025
+- Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.
+- Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of large-scale ETL jobs.
+- Managed and processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical workloads.
+
+REAL-TIME DATA PIPELINES (PERSONAL PROJECTS)
+Event-Driven Architecture | Jan 2025 - Present
+- Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput message ingestion and Spark Streaming for live data processing.
+- Integrated multiple financial APIs into a resilient Kafka cluster, ensuring zero data loss during peak volatility periods.
+- Developed automated alerting systems triggered by Spark processing windows, delivering sub-second insights to end-users.
 
 FULL STACK SOFTWARE ENGINEER
 Camisa10 | March 2026 – Present

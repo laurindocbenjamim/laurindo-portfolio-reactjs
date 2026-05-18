@@ -216,13 +216,24 @@ function Home() {
   const EXPERIENCES = [
     {
       role: "Data Engineer (Contract)",
-      company: "Databricks & Data Lake Integration",
-      period: "January 2025 – Present",
-      desc: "Specializing in cloud-native data architecture and large-scale ETL/ELT pipelines using Databricks and Spark.",
+      company: "Azure & Big Data Solutions",
+      period: "May 2025 – October 2025",
+      desc: "Specializing in cloud-native data architecture and large-scale orchestration using Azure Databricks, Airflow, and Hadoop.",
       bullets: [
-        "Architected enterprise Data Lakes using Databricks, integrating PostgreSQL, CSV, and API sources via Spark and Delta Lake.",
-        "Optimized complex ETL workflows for hybrid cloud environments, focusing on high throughput and data integrity.",
-        "Reduced data processing latency by 45% through optimized Spark tuning and structured streaming implementations."
+        "Architected enterprise Data Lakes using Azure Databricks, integrating PostgreSQL and API sources via Spark and Delta Lake.",
+        "Implemented workflow orchestration with Apache Airflow, automating complex dependency chains for global data ingestion.",
+        "Optimized Hadoop/Hive queries for large-scale datasets, improving analytical processing time by 40%."
+      ]
+    },
+    {
+      role: "Pipeline Architect (Projects)",
+      company: "Kafka & Spark Streaming",
+      period: "April 2025 – September 2025",
+      desc: "Building high-throughput, event-driven data architectures for real-time analytics.",
+      bullets: [
+        "Developed a real-time sentiment analysis engine using Apache Kafka and Spark Streaming.",
+        "Managed high-volume data streams from multiple financial APIs with zero-loss reliability.",
+        "Built automated alerting systems providing sub-second latency for market volatility detection."
       ]
     },
     {
