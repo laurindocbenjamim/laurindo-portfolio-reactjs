@@ -17,9 +17,12 @@ import {
   Brain,
   Server,
   Activity,
-  BarChart3
+  BarChart3,
+  Presentation
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import Showcases from "./components/Showcases";
 
 const PROFILE_IMAGES = [
   "https://github.com/laurindocbenjamim/dev-images/blob/main/Laurindo.png?raw=true",
@@ -29,46 +32,131 @@ const PROFILE_IMAGES = [
 
 const PROJECTS = [
   {
-    title: "Camisa 10 Shopping",
-    description: "A premium e-commerce platform for sports apparel with a focus on high-performance UX, secure payments, and inventory management.",
-    demo: "https://camisa10-shopping.onrender.com",
-    tags: ["React", "Node.js", "Tailwind", "PostgreSQL"],
-    type: "E-commerce"
+    title: "MSpeeText: converter",
+    description: "Convert audio speech into text using AI models with precision and high performance.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/portfolio/convert-speech-to-text.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["OpenAI API", "Python", "Flask", "JS", "Bootstrap"],
+    type: "AI / Utility"
   },
   {
-    title: "Discord AI Multi-Bot",
-    description: "Advanced Discord bot integration featuring AI-powered commands, community moderation, and automated workflows.",
-    demo: "https://discord.com/oauth2/authorize?client_id=1489759723124297930&permissions=268814336&integration_type=0&scope=bot+applications.commands",
-    tags: ["TypeScript", "Discord.js", "Gemini AI", "Redis"],
-    type: "Bot / AI"
+    title: "AI Audio Book generator",
+    description: "Generate professional audio books from text documents using advanced neural voices.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/portfolio/deepseek_audiobook_75.html",
+    github: "https://github.com/laurindocbenjamim/pidio-audio-book-frontend",
+    tags: ["AI", "Python", "Flask", "Bootstrap"],
+    type: "AI / Content"
   },
   {
-    title: "Huambo Geopark Site",
-    description: "Official portal for the Huambo Plateau Geopark, showcasing environmental beauty and tourism information with modern storytelling.",
-    demo: "https://github.com/laurindocbenjamim/huambo-plateau-geopark-site",
-    tags: ["Next.js", "Framer Motion", "CMS"],
-    type: "Web Portal"
+    title: "Clone Voice with AI",
+    description: "State-of-the-art voice cloning technology for personalized audio experiences.",
+    demo: "https://www.d-tuning.com/api/v1/video/clone-voice",
+    github: "https://github.com/laurindocbenjamim/pidio-audio-book-frontend",
+    tags: ["AI", "Python", "API", "Audio"],
+    type: "AI / Service"
   },
   {
-    title: "MathWizAi",
-    description: "AI-driven educational tool designed to solve complex mathematical problems and explain steps using natural language processing.",
-    demo: "https://github.com/laurindocbenjamim/MathWizAi",
-    tags: ["Python", "FastAPI", "OpenAI", "React"],
-    type: "AI / EdTech"
+    title: "Workflow Automated Data Processing",
+    description: "Automated end-to-end data processing workflows for industrial applications.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/workflow.html",
+    github: "https://github.com/laurindocbenjamim/pidio-audio-book-frontend",
+    tags: ["Python", "Automation", "Flask", "Data"],
+    type: "Automation"
+  },
+  {
+    title: "CV Customization Tool",
+    description: "Intelligent tool to adjust CVs to specific job requirements automatically.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/cv_customizer.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["NLP", "Python", "JS", "Bootstrap"],
+    type: "AI / HR"
+  },
+  {
+    title: "Video Studio",
+    description: "Cloud-based video editing and generation platform with advanced tools.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/video_studio_v4.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["Python", "Flask", "Video Processing"],
+    type: "Creative"
+  },
+  {
+    title: "WPodcaster",
+    description: "Comprehensive platform for podcast creation and distribution.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/podcast_creator/w_podcaster.html",
+    github: "https://github.com/laurindocbenjamim/podcast_creator",
+    tags: ["Audio", "Python", "Flask", "JS"],
+    type: "Creative"
+  },
+  {
+    title: "WakeUp Alarm",
+    description: "Personalized AI alarm system that wakes you up with custom music and voices.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/alarm_app/index.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["JS", "AI", "Mobile Web"],
+    type: "Utility"
+  },
+  {
+    title: "Countries API",
+    description: "High-performance API for international country data and calling codes.",
+    demo: "https://www.d-tuning.com/api/v1/web-scrapping/countries",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["Scraping", "Python", "FastAPI"],
+    type: "API"
+  },
+  {
+    title: "Dubbing Studio",
+    description: "Automated video dubbing and translation services using AI.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/dubbing_studio/",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["AI", "Multimedia", "Python"],
+    type: "Creative"
+  },
+  {
+    title: "Sentiment Analysis",
+    description: "Extract deep sentiments and entities from text data using Watson AI.",
+    demo: "https://github.com/laurindocbenjamim/pylau-app-flask/tree/main/app/package_data_science/module_sentiment_analyse",
+    github: "https://github.com/laurindocbenjamim/pylau-app-flask/tree/main/app/package_data_science/module_sentiment_analyse",
+    tags: ["Watson AI", "NLP", "Python", "Flask"],
+    type: "Data Science"
+  },
+  {
+    title: "Stream Speech Test",
+    description: "Real-time speech-to-text streaming testing module.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/portfolio/stream-speech.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["Streaming", "WebSockets", "JS", "AI"],
+    type: "Testing"
+  },
+  {
+    title: "Smart Reader",
+    description: "AI-powered document reader with text-to-speech highlights.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/doc_reader/doc_reader.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["AI", "JS", "TTS", "Python"],
+    type: "AI / Accessibility"
+  },
+  {
+    title: "Audio Splitter",
+    description: "Intelligent audio segmentation tool for precise file splitting.",
+    demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/portfolio/split-audio.html",
+    github: "https://github.com/laurindocbenjamim/laurindo-c-benjamim-portfolio",
+    tags: ["Python", "Flask", "Audio"],
+    type: "Utility"
   }
 ];
 
 const SKILLS = [
-  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
-  { category: "Backend", items: ["Node.js", "Python (FastAPI/Flask)", "PostgreSQL", "MongoDB", "Redis"], icon: <Server className="w-5 h-5 text-emerald-500" /> },
-  { category: "DevOps & Tools", items: ["Docker", "Git", "Nginx", "Keycloak", "CI/CD"], icon: <Terminal className="w-5 h-5 text-amber-500" /> },
-  { category: "AI & Data Science", items: ["Gemini API", "Prompt Engineering", "R", "Scikit-Learn"], icon: <Brain className="w-5 h-5 text-purple-500" /> }
+  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Bootstrap"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
+  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "Java", "PHP (Pure/Laravel)", "PostgreSQL", "MySQL", "Hadoop/Hive", "Databricks", "Data Lake/Lakehouse"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
+  { category: "DevOps & Cloud", items: ["Docker", "Git", "Nginx", "Keycloak", "Apache Airflow", "Apache Spark", "Data Fabric"], icon: <Server className="w-5 h-5 text-amber-500" /> },
+  { category: "AI & Science", items: ["OpenAI API", "Watson AI", "Gemini API", "Speech-to-Text", "Voice Cloning"], icon: <Brain className="w-5 h-5 text-purple-500" /> }
 ];
 
-export default function App() {
+function Home() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedMobileBadge, setSelectedMobileBadge] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -87,77 +175,66 @@ export default function App() {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
+    { name: "Showcases", href: "/shocases" },
     { name: "Contact", href: "#contact" }
   ];
 
+  const EXPERIENCES = [
+    {
+      role: "Senior Data Engineer (Databricks & Lakehouse)",
+      company: "Modern Data Platforms",
+      period: "2022 - 2023",
+      desc: "Architected scalable Lakehouse solutions using Databricks and Delta Lake. Engineered high-performance Spark pipelines for ETL/ELT processes and implemented automated data quality frameworks.",
+      bullets: [
+        "Migrated legacy on-premise data pipelines to Databricks Lakehouse architecture, improving processing speed by 45%.",
+        "Implemented robust Data Lake storage strategies with prioritized security and medallion architecture (Bronze/Silver/Gold).",
+        "Optimized complex Spark SQL and PySpark jobs, significantly reducing cloud compute costs."
+      ]
+    },
+    {
+      role: "Data Solutions Architect (Data Fabric)",
+      company: "Enterprise Integration",
+      period: "2021 - 2022",
+      desc: "Designed and deployed Data Fabric frameworks to unify disparated data sources and enable real-time metadata-driven data orchestration across hybrid cloud environments.",
+      bullets: [
+        "Engineered automated metadata discovery and generation pipelines to support semantic data layers.",
+        "Implemented Data Fabric concepts for unified data governance, access control, and self-service analytics.",
+        "Collaborated on harmonizing data across multi-cloud environments using advanced orchestration tools."
+      ]
+    },
+    {
+      role: "Trainer",
+      company: "Charkcoders, Gaia",
+      period: "September 2023 – May 2024",
+      desc: "Python Developer trainer for children aged 11-17 (75% success), Web Developer trainer (90% success), and Game Developer trainer (68% success).",
+      bullets: [
+        "Python Developer trainer for children aged 11 to 17 years old, where 75% of them show good learning.",
+        "Web Developer trainer for children aged 11 to 17 years old, where 90% of them show good learning.",
+        "Game Developer trainer for children aged 8 to 17 years old, where 68% of them show good learning."
+      ]
+    },
+    {
+      role: "Senior Software Developer (Desktop)",
+      company: "IPPE Lubango (Angola)",
+      period: "January 2018 - November 2021",
+      desc: "Developed a desktop file management application with 98% of requirements implemented and 89% acceptance."
+    },
+    {
+      role: "Senior Software Developer (Web)",
+      company: "IPPE Lubango (Angola)",
+      period: "January 2018 - November 2021",
+      desc: "Developed an academic management platform using pure PHP, HTML, CSS, Bootstrap, JQuery, and Ajax (75% acceptance). Modernized manual payment registrations."
+    },
+    {
+      role: "Full Stack Developer",
+      company: "ELT - Contas, lda - Lubango",
+      period: "March 2019 - September 2021",
+      desc: "Developed a Shopping web application with 70% of requirements implemented using PHP/Laravel and JQuery (Project discontinued)."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-brand-primary/20 transition-colors duration-500">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-black font-display font-bold text-lg">L</span>
-              </div>
-              <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
-            </div>
-            
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a 
-                href="#contact" 
-                className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
-              >
-                Hire Me
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden p-2 text-neutral-400 hover:text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Nav */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
-            >
-              <div className="px-4 py-6 space-y-4">
-                {navLinks.map((link) => (
-                  <a 
-                    key={link.name} 
-                    href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block text-lg font-medium text-neutral-200 hover:text-white"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-
+    <>
       {/* Hero Section */}
       <motion.section 
         id="hero" 
@@ -178,13 +255,13 @@ export default function App() {
                 <span className="w-2 h-2 bg-brand-primary rounded-full animate-pulse" />
                 Available for new opportunities
               </div>
-              <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight mb-6 text-white">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold leading-tight mb-6 text-white text-center lg:text-left">
                 Building <span className="text-brand-primary italic">scalable</span> solutions with AI & Modern Tech
               </h1>
-              <p className="text-lg text-neutral-400 mb-8 max-w-lg leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed text-center lg:text-left">
                 Hi, I'm <span className="text-white font-semibold">Laurindo C. Benjamim</span>. A Software Engineer dedicated to crafting beautiful, high-performance web applications and intelligent automated systems.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                 <a 
                   href="#projects" 
                   className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-xl font-medium hover:bg-neutral-200 transition-all hover:translate-y-[-2px] shadow-lg shadow-white/5"
@@ -192,7 +269,7 @@ export default function App() {
                   View My Work
                   <ChevronRight className="w-4 h-4" />
                 </a>
-                <div className="flex items-center gap-4 px-4">
+                <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
                   <a href="https://github.com/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="p-3 text-neutral-500 hover:text-white transition-colors hover:bg-neutral-900 rounded-lg">
                     <Github className="w-6 h-6" />
                   </a>
@@ -315,17 +392,44 @@ export default function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
 
-              {/* Mobile Badges (Static or simplified) */}
-              <div className="lg:hidden absolute -bottom-12 flex gap-4 w-full justify-center">
-                <div className="bg-neutral-900 p-2 rounded-xl border border-neutral-800 shadow-xl">
-                  <Terminal className="w-4 h-4 text-brand-primary" />
+              {/* Mobile Badges (Interactive) */}
+              <div className="lg:hidden absolute -bottom-16 flex flex-col items-center gap-4 w-full">
+                <div className="flex gap-4 justify-center">
+                  {[
+                    { icon: <Terminal className="w-5 h-5" />, color: "text-brand-primary", title: "Experience", value: "Full Stack Developer" },
+                    { icon: <BarChart3 className="w-5 h-5 theme-blue" />, color: "text-blue-500", title: "Expertise", value: "Data Engineer" },
+                    { icon: <Activity className="w-5 h-5 theme-rose" />, color: "text-rose-500", title: "Education", value: "Master Biomedical Engineer" }
+                  ].map((badge, i) => (
+                    <motion.button
+                      key={i}
+                      onClick={() => setSelectedMobileBadge(selectedMobileBadge === i ? null : i)}
+                      whileTap={{ scale: 0.9 }}
+                      className={`relative bg-neutral-900 p-3 rounded-xl border transition-all ${
+                        selectedMobileBadge === i ? "border-brand-primary ring-1 ring-brand-primary/50" : "border-neutral-800"
+                      } shadow-xl`}
+                    >
+                      <div className={badge.color}>{badge.icon}</div>
+                    </motion.button>
+                  ))}
                 </div>
-                <div className="bg-neutral-900 p-2 rounded-xl border border-neutral-800 shadow-xl">
-                  <BarChart3 className="w-4 h-4 text-blue-500" />
-                </div>
-                <div className="bg-neutral-900 p-2 rounded-xl border border-neutral-800 shadow-xl">
-                  <Activity className="w-4 h-4 text-rose-500" />
-                </div>
+                
+                <AnimatePresence>
+                  {selectedMobileBadge !== null && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="bg-neutral-900 border border-neutral-800 p-4 rounded-2xl shadow-2xl w-full max-w-[280px]"
+                    >
+                      <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1 text-center">
+                        {[ "Experience", "Expertise", "Education" ][selectedMobileBadge]}
+                      </p>
+                      <p className="text-sm font-bold text-white text-center">
+                        {[ "Full Stack Developer", "Data Engineer", "Master Biomedical Engineer" ][selectedMobileBadge]}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           </div>
@@ -389,27 +493,8 @@ export default function App() {
             </a>
           </motion.div>
 
-          <div className="space-y-12 relative before:absolute before:left-[17px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-px before:bg-neutral-800">
-            {[
-              {
-                role: "Senior Full Stack Engineer",
-                company: "DataTuning SaaS",
-                period: "2023 - Present",
-                desc: "Leading the development of SaaS solutions, integrating Keycloak CRM for robust authentication and Docker for containerized deployment strategies."
-              },
-              {
-                role: "Backend Specialist",
-                company: "E-commerce Solutions",
-                period: "2022 - 2023",
-                desc: "Built high-traffic shopping platforms with Python/Flask and PostgreSQL, focusing on secure transaction flows and real-time inventory updates."
-              },
-              {
-                role: "Web Developer",
-                company: "Huambo Geopark Project",
-                period: "2021 - 2022",
-                desc: "Developed the digital presence for cultural and environmental landmarks in Angola, utilizing Next.js for SEO and high performance."
-              }
-            ].map((exp, idx) => (
+          <div className="space-y-12 relative before:absolute before:left-[17px] sm:before:left-[21px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-px before:bg-neutral-800">
+            {EXPERIENCES.map((exp, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -421,14 +506,22 @@ export default function App() {
                 <div className="flex-1 w-full md:text-right hidden md:block">
                   {idx % 2 === 0 ? (
                     <div className="pr-12">
-                      <p className="text-brand-primary font-bold mb-1">{exp.period}</p>
-                      <h3 className="text-xl font-bold mb-2">{exp.role}</h3>
-                      <p className="text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
+                      <p className="text-brand-primary font-bold mb-1 font-mono text-xs">{exp.period}</p>
+                      <h3 className="text-xl font-bold mb-2 text-white">{exp.role}</h3>
+                      {exp.bullets ? (
+                        <ul className="text-neutral-500 text-sm space-y-1 text-right">
+                          {exp.bullets.map((bullet, i) => (
+                            <li key={i} className="leading-relaxed">{bullet}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
+                      )}
                     </div>
                   ) : null}
                 </div>
                 
-                <div className="w-9 h-9 rounded-full bg-neutral-900 border-4 border-neutral-800 shadow-sm z-10 flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-neutral-900 border-4 border-neutral-800 shadow-sm z-10 flex items-center justify-center shrink-0">
                   <div className="w-2 h-2 rounded-full bg-white" />
                 </div>
 
@@ -436,16 +529,32 @@ export default function App() {
                   <div className={`${idx % 2 !== 0 ? 'md:pl-12' : 'pl-12 md:pl-0'}`}>
                     <div className="md:hidden mb-1">
                        <p className="text-brand-primary font-bold mb-1 font-mono text-xs">{exp.period}</p>
-                       <h3 className="text-xl font-bold mb-2">{exp.role}</h3>
+                       <h3 className="text-xl font-bold mb-2 text-white">{exp.role}</h3>
                     </div>
                     {idx % 2 !== 0 ? (
                       <div className="hidden md:block">
-                        <p className="text-brand-primary font-bold mb-1">{exp.period}</p>
-                        <h3 className="text-xl font-bold mb-2">{exp.role}</h3>
-                        <p className="text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
+                        <p className="text-brand-primary font-bold mb-1 font-mono text-xs">{exp.period}</p>
+                        <h3 className="text-xl font-bold mb-2 text-white">{exp.role}</h3>
+                        {exp.bullets ? (
+                          <ul className="text-neutral-500 text-sm space-y-1">
+                            {exp.bullets.map((bullet, i) => (
+                              <li key={i} className="leading-relaxed">{bullet}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
+                        )}
                       </div>
                     ) : null}
-                    <p className="md:hidden text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
+                    <div className="md:hidden text-neutral-500 text-sm leading-relaxed">
+                      {exp.bullets ? (
+                        <ul className="space-y-1">
+                          {exp.bullets.map((bullet, i) => (
+                            <li key={i}>{bullet}</li>
+                          ))}
+                        </ul>
+                      ) : exp.desc}
+                    </div>
                     <p className="text-xs font-bold uppercase tracking-widest text-neutral-400 mt-4">{exp.company}</p>
                   </div>
                 </div>
@@ -472,16 +581,19 @@ export default function App() {
           >
             <div>
               <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Portfolio</p>
-              <h2 className="text-4xl font-display font-bold text-white">Featured Projects</h2>
+              <h2 className="text-4xl font-display font-bold text-white leading-tight">Featured Projects</h2>
+              <Link to="/shocases" className="inline-flex items-center gap-2 mt-4 text-brand-primary hover:text-white transition-colors text-sm font-bold">
+                View Project Slides <ChevronRight className="w-4 h-4" />
+              </Link>
             </div>
             
             {/* Filter buttons */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-end">
               {projectTypes.map((type) => (
                 <button
                   key={type}
                   onClick={() => setActiveFilter(type)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                     activeFilter === type 
                     ? "bg-white text-black shadow-md" 
                     : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-white"
@@ -514,9 +626,16 @@ export default function App() {
                       <div className="inline-block px-3 py-1 bg-neutral-800 rounded-lg text-xs font-bold text-neutral-400 uppercase tracking-widest">
                          {project.type}
                       </div>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors">
-                        <ExternalLink className="w-5 h-5 text-neutral-500 group-hover:text-white" />
-                      </a>
+                      <div className="flex gap-2">
+                        {project.github && (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="GitHub Repository">
+                            <Github className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
+                          </a>
+                        )}
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="Live Demo">
+                          <ExternalLink className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
+                        </a>
+                      </div>
                     </div>
                     <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
                     <p className="text-neutral-400 mb-6 line-clamp-2">
@@ -612,7 +731,7 @@ export default function App() {
                   </div>
                   <div>
                     <p className="text-xs text-neutral-500 font-bold uppercase tracking-widest leading-none mb-1">Location</p>
-                    <p className="text-lg font-medium">Huambo, Angola (Available Worldwide)</p>
+                    <p className="text-lg font-medium">Porto, Portugal (Available Worldwide)</p>
                   </div>
                 </div>
               </div>
@@ -652,19 +771,123 @@ export default function App() {
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-primary/10 blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-neutral-800">
-         <div className="max-w-7xl mx-auto px-4 text-center">
-            <div className="flex justify-center gap-6 mb-8">
-              <a href="https://github.com/laurindocbenjamim" className="text-neutral-500 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
-              <a href="https://linkedin.com/in/laurindocbenjamim" className="text-neutral-500 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
-              <a href="https://youtube.com/@laurindocbenjamim" className="text-neutral-500 hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
+    </>
+  );
+}
+
+export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const navLinks = [
+    { name: "About", href: "/#hero" },
+    { name: "Experience", href: "/#experience" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Shocases", href: "/shocases" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Contact", href: "/#contact" }
+  ];
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
+
+  return (
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-brand-primary/20 transition-colors duration-500">
+      <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <span className="text-black font-display font-bold text-lg">L</span>
+              </div>
+              <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
+            </Link>
+            
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                link.href.startsWith("/#") ? (
+                   <a 
+                    key={link.name} 
+                    href={link.href} 
+                    className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link 
+                    key={link.name} 
+                    to={link.href} 
+                    className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                )
+              ))}
+              <a 
+                href="#contact" 
+                className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
+              >
+                Hire Me
+              </a>
             </div>
-            <p className="text-neutral-600 text-sm">
-              &copy; {new Date().getFullYear()} Laurindo C. Benjamim. All rights reserved. Built with React & Tailwind.
-            </p>
-         </div>
-      </footer>
+
+            <button 
+              className="md:hidden p-2 text-neutral-400 hover:text-white"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
+            >
+              <div className="px-4 py-6 space-y-4">
+                {navLinks.map((link) => (
+                   link.href.startsWith("/#") ? (
+                    <a 
+                      key={link.name} 
+                      href={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block text-lg font-medium text-neutral-200 hover:text-white"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link 
+                      key={link.name} 
+                      to={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block text-lg font-medium text-neutral-200 hover:text-white"
+                    >
+                      {link.name}
+                    </Link>
+                  )
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shocases" element={<Showcases />} />
+      </Routes>
     </div>
   );
 }

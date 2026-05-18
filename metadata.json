@@ -1,6 +1,6 @@
 {
   "name": "Laurindo C. Benjamim | Portfolio",
-  "description": "Full-stack Software Engineer Portfolio showcasing AI, E-commerce, and Multimedia projects. Skilled in React, Python, and Cloud technologies.",
+  "description": "Professional portfolio of Laurindo C. Benjamim, Software & Data Engineer. Showcasing AI-powered tools, automated workflows, and full-stack applications.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
