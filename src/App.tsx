@@ -173,10 +173,10 @@ const PROJECTS = [
 ];
 
 const SKILLS = [
-  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "PostgreSQL", "MongoDB", "Redis", "Java", "PHP (Laravel)", "Node.js (Express)", "Hadoop/Hive", "Microsoft Fabric"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
+  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "Databricks", "Apache Spark", "PostgreSQL", "MongoDB", "Redis", "Java", "Hadoop/Hive", "Microsoft Fabric"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
   { category: "AI & ML", items: ["Python", "MatLAB (Image/Signal Processing)", "Machine Learning (SparkML)", "Gemini API", "OpenAI API", "NLP", "R"], icon: <Brain className="w-5 h-5 text-purple-500" /> },
   { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
-  { category: "Cloud & DevOps", items: ["Azure", "AWS", "GCP", "Docker", "Git", "CI/CD", "Nginx", "Apache Airflow", "Apache Spark"], icon: <Server className="w-5 h-5 text-amber-500" /> }
+  { category: "Cloud & DevOps", items: ["Azure", "AWS", "GCP", "Docker", "Git", "CI/CD", "Nginx", "Apache Airflow"], icon: <Server className="w-5 h-5 text-amber-500" /> }
 ];
 
 function Home() {
@@ -214,6 +214,17 @@ function Home() {
   ];
 
   const EXPERIENCES = [
+    {
+      role: "Data Engineer (Contract)",
+      company: "Databricks & Data Lake Integration",
+      period: "January 2025 – Present",
+      desc: "Specializing in cloud-native data architecture and large-scale ETL/ELT pipelines using Databricks and Spark.",
+      bullets: [
+        "Architected enterprise Data Lakes using Databricks, integrating PostgreSQL, CSV, and API sources via Spark and Delta Lake.",
+        "Optimized complex ETL workflows for hybrid cloud environments, focusing on high throughput and data integrity.",
+        "Reduced data processing latency by 45% through optimized Spark tuning and structured streaming implementations."
+      ]
+    },
     {
       role: "Full Stack Software Engineer",
       company: "Camisa10",
@@ -610,9 +621,18 @@ function Home() {
             className="flex flex-col gap-8 mb-12"
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div>
-                <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Portfolio</p>
-                <h2 className="text-4xl font-display font-bold text-white leading-tight">Featured Projects</h2>
+              <div className="flex flex-col md:flex-row md:items-end justify-between items-start gap-4">
+                <div>
+                  <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Portfolio</p>
+                  <h2 className="text-4xl font-display font-bold text-white leading-tight">Featured Projects</h2>
+                </div>
+                <Link 
+                  to="/showcases" 
+                  className="flex items-center gap-2 text-sm font-bold bg-brand-primary text-black px-6 py-3 rounded-xl hover:bg-white transition-all shadow-lg shadow-brand-primary/20"
+                >
+                  View Case Studies
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
               </div>
               
               {/* Search Bar */}
@@ -919,7 +939,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-brand-primary/20 transition-colors duration-500">
-      {!["/cv", "/showcases"].includes(location.pathname) && (
+      {!["/cv"].includes(location.pathname) && (
         <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
