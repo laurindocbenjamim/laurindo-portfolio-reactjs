@@ -29,11 +29,11 @@ CORE SKILLS
 
 PROFESSIONAL EXPERIENCE
 
-Data Engineer (Contract/Freelance)
-Databricks & Data Lake Integration | Jan 2025 - Present
-- Architected and implemented production-grade Databricks pipelines. Integrated multiple data sources (PostgreSQL, APIs, and CSV files) into centralized Data Lakes using Spark and Delta Lake.
-- Developed scalable data lake solutions for complex data ingestion. Optimized ETL/ELT workflows using Databricks, ensuring high throughput and data integrity across hybrid cloud environments.
-- Automated data processing workflows with Databricks Jobs and Spark, reducing manual processing time by 60%.
+Full Stack Software Engineer (Project Lead - SpectraLab)
+SpectraLab | 2026 - Present
+- Architected and developed SpectraLab, a high-performance modular monolithic web application for spectroscopy analysis.
+- Implemented real-time chemometrics processing supporting multiple file formats (.csv, .sp).
+- Integrated unsupervised and supervised learning algorithms (PCA, PLS-DA, RAMAN) with interactive visualizations using Python and React.
 
 Full Stack Software Engineer
 Camisa10 | March 2026 – Present
@@ -46,6 +46,18 @@ Elinara Lab. | Jan 2026 – April 2026
 - Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.
 - Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.
 - Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite.
+
+Data Engineer (Contract/Freelance)
+Azure, Databricks & Big Data Solutions | May 2025 - Oct 2025
+- Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.
+- Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of ETL jobs.
+- Processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical reporting.
+
+Data Pipeline Architect (Personal Projects)
+Real-time Streaming & Kafka | Jan 2025 - Present
+- Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput ingestion and Spark Streaming for live processing.
+- Integrated financial APIs into a resilient Kafka cluster, ensuring zero data loss during high-volatility periods.
+- Developed sub-second alerting systems triggered by Spark stateful processing windows.
 
 FREELANCE DATA & SOFTWARE ENGINEER
 Personal Projects | January 2024 – Present
@@ -163,23 +175,13 @@ CERTIFICATIONS
           
           <div className="space-y-2">
             <ResumeExperienceItem 
-              title="Data Engineer (Contract)"
-              company="Azure, Databricks & Big Data Solutions"
-              date="May 2025 - Oct 2025"
+              title="Full Stack Software Engineer (Project Lead)"
+              company="SpectraLab - Spectroscopy Analysis"
+              date="2026 - Present"
               bullets={[
-                "Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.",
-                "Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of ETL jobs.",
-                "Processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical reporting."
-              ]}
-            />
-            <ResumeExperienceItem 
-              title="Data Pipeline Architect (Personal Projects)"
-              company="Real-time Streaming & Kafka"
-              date="Jan 2025 - Present"
-              bullets={[
-                "Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput ingestion and Spark Streaming for live processing.",
-                "Integrated financial APIs into a resilient Kafka cluster, ensuring zero data loss during high-volatility periods.",
-                "Developed sub-second alerting systems triggered by Spark stateful processing windows."
+                "Architected and developed SpectraLab, a high-performance modular monolithic web application for chemometrics processing.",
+                "Implemented real-time preprocessing and data ingestion for multiple spectroscopy file formats (.csv, .sp).",
+                "Built and integrated PCA, PLS-DA, and RAMAN algorithms returning interactive d3.js visualizations for analytical chemistry."
               ]}
             />
             <ResumeExperienceItem 
@@ -200,6 +202,26 @@ CERTIFICATIONS
                 "Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.",
                 "Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.",
                 "Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite."
+              ]}
+            />
+            <ResumeExperienceItem 
+              title="Data Engineer (Contract)"
+              company="Azure, Databricks & Big Data Solutions"
+              date="May 2025 - Oct 2025"
+              bullets={[
+                "Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.",
+                "Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of ETL jobs.",
+                "Processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical reporting."
+              ]}
+            />
+            <ResumeExperienceItem 
+              title="Data Pipeline Architect (Personal Projects)"
+              company="Real-time Streaming & Kafka"
+              date="Jan 2025 - Present"
+              bullets={[
+                "Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput ingestion and Spark Streaming for live processing.",
+                "Integrated financial APIs into a resilient Kafka cluster, ensuring zero data loss during high-volatility periods.",
+                "Developed sub-second alerting systems triggered by Spark stateful processing windows."
               ]}
             />
           </div>

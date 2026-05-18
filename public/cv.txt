@@ -15,17 +15,11 @@ CORE SKILLS
 
 PROFESSIONAL EXPERIENCE
 
-DATA ENGINEER (FREELANCE)
-Cloud & Big Data Solutions | May 2025 - Oct 2025
-- Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.
-- Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of large-scale ETL jobs.
-- Managed and processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical workloads.
-
-REAL-TIME DATA PIPELINES (PERSONAL PROJECTS)
-Event-Driven Architecture | Jan 2025 - Present
-- Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput message ingestion and Spark Streaming for live data processing.
-- Integrated multiple financial APIs into a resilient Kafka cluster, ensuring zero data loss during peak volatility periods.
-- Developed automated alerting systems triggered by Spark processing windows, delivering sub-second insights to end-users.
+FULL STACK SOFTWARE ENGINEER (PROJECT LEAD - SPECTRALAB)
+SpectraLab | 2026 - Present
+- Architected and developed SpectraLab, a high-performance modular monolithic web application for spectroscopy analysis.
+- Implemented real-time chemometrics processing supporting multiple file formats (.csv, .sp).
+- Integrated unsupervised and supervised learning algorithms (PCA, PLS-DA, RAMAN) with interactive visualizations using Python and React.
 
 FULL STACK SOFTWARE ENGINEER
 Camisa10 | March 2026 – Present
@@ -38,6 +32,18 @@ Elinara Lab. | Jan 2026 – April 2026
 - Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.
 - Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.
 - Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite.
+
+DATA ENGINEER (FREELANCE)
+Azure, Databricks & Big Data Solutions | May 2025 - Oct 2025
+- Architected and implemented production-grade Databricks pipelines on Azure, integrating PostgreSQL, APIs, and CSV sources into centralized Delta Lakes.
+- Orchestrated complex data workflows using Apache Airflow for automated scheduling and dependency management of large-scale ETL jobs.
+- Managed and processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical workloads.
+
+REAL-TIME DATA PIPELINES (PERSONAL PROJECTS)
+Event-Driven Architecture | Jan 2025 - Present
+- Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput message ingestion and Spark Streaming for live data processing.
+- Integrated multiple financial APIs into a resilient Kafka cluster, ensuring zero data loss during peak volatility periods.
+- Developed automated alerting systems triggered by Spark processing windows, delivering sub-second insights to end-users.
 
 FREELANCE DATA & SOFTWARE ENGINEER
 Personal Projects | January 2024 – Present

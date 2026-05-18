@@ -35,6 +35,14 @@ const PROFILE_IMAGES = [
 
 const PROJECTS = [
   {
+    title: "SpectraLab",
+    description: "High-performance chemometrics and spectroscopy analysis platform. Modular monolithic architecture supporting .csv/.sp file processing, real-time preprocessing, and PCA/PLS-DA algorithms.",
+    demo: "https://ispectdata-ai.onrender.com",
+    github: "https://github.com/laurindocbenjamim",
+    tags: ["Chemometrics", "Spectroscopy", "Python", "PCA", "React"],
+    type: "Data Science"
+  },
+  {
     title: "ASun Browser AI Agent",
     description: "An intelligent browser agent with two specialized modules: an automation agent for form fulfillment and a pentesting agent for security testing.",
     demo: "https://aosbrowser-002.onrender.com",
@@ -215,6 +223,26 @@ function Home() {
 
   const EXPERIENCES = [
     {
+      role: "Full Stack Software Engineer",
+      company: "Camisa10",
+      period: "March 2026 – Present",
+      desc: "Architecting and developing a high-performance e-commerce platform for sports apparel using FastAPI and React.js.",
+      bullets: [
+        "Integrating Stripe API for secure payment processing and managing complex data states with PostgreSQL, MongoDB, and Redis.",
+        "Managing deployment and continuous integration on Render, overseen the final 30% of the production launch phase."
+      ]
+    },
+    {
+      role: "Full Stack Software Engineer",
+      company: "Elinara Lab.",
+      period: "January 2026 – April 2026",
+      desc: "Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.",
+      bullets: [
+        "Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.",
+        "Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite."
+      ]
+    },
+    {
       role: "Data Engineer (Contract)",
       company: "Azure & Big Data Solutions",
       period: "May 2025 – October 2025",
@@ -234,26 +262,6 @@ function Home() {
         "Developed a real-time sentiment analysis engine using Apache Kafka and Spark Streaming.",
         "Managed high-volume data streams from multiple financial APIs with zero-loss reliability.",
         "Built automated alerting systems providing sub-second latency for market volatility detection."
-      ]
-    },
-    {
-      role: "Full Stack Software Engineer",
-      company: "Camisa10",
-      period: "March 2026 – Present",
-      desc: "Architecting and developing a high-performance e-commerce platform for sports apparel using FastAPI and React.js.",
-      bullets: [
-        "Integrating Stripe API for secure payment processing and managing complex data states with PostgreSQL, MongoDB, and Redis.",
-        "Managing deployment and continuous integration on Render, overseen the final 30% of the production launch phase."
-      ]
-    },
-    {
-      role: "Full Stack Software Engineer",
-      company: "Elinara Lab.",
-      period: "January 2026 – April 2026",
-      desc: "Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.",
-      bullets: [
-        "Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.",
-        "Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite."
       ]
     },
     {

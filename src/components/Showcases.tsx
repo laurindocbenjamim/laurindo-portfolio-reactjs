@@ -98,6 +98,16 @@ const projectsData = [
     solution: 'Desenvolvimento de uma ferramenta baseada em IA utilizando Python e APSchedule para automação de tarefas. Integração de webhooks do Discord para relatórios em tempo real de radares de setor (ex: foco em IA Agêntica nos EUA) e tendências de liquidez.',
     tools: ['Python', 'APSchedule', 'Discord API', 'Yahoo Finance', 'LLM Fine-tuning'],
     why: 'O ecossistema financeiro do Python e a acessibilidade do Discord tornam-no a plataforma perfeita para entregar insights de dados complexos a traders e instituições de forma rápida.'
+  },
+  {
+    id: 10,
+    title: 'SpectraLab',
+    scenario: 'Desenvolvimento de uma plataforma de processamento quimiométrico de alto desempenho para análise de espectroscopia, permitindo o upload e análise em tempo real de dados complexos de química analítica.',
+    objectives: ['Processar ficheiros de espectroscopia em formatos .csv e .sp.', 'Implementar algoritmos de pré-processamento de sinal em tempo real.', 'Integrar visualizações interativas para PCA (Análise de Componentes Principais) e PLS-DA.'],
+    challenge: 'Lidar com grandes matrizes de dados espectrais e executar cálculos estatísticos complexos de forma modular e performante dentro de um navegador e backend sincronizados.',
+    solution: 'Arquitetura monolítica modular construída com Python para o processamento de dados e React para a interface. Integração de bibliotecas especializadas para execução de algoritmos RAMAN e PCA, fornecendo feedback visual instantâneo através de gráficos d3.js interactivos.',
+    tools: ['Python', 'React', 'Chemometrics', 'PCA', 'PLS-DA', 'd3.js', 'Modular Monolith'],
+    why: 'A escolha por uma arquitetura monolítica modular permitiu um desenvolvimento ágil sem a complexidade de rede de microserviços, garantindo que o processamento intensivo de dados espectrais fosse realizado com a menor latência possível.'
   }
 ];
 
