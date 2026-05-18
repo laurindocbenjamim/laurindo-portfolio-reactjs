@@ -68,6 +68,36 @@ const projectsData = [
     solution: 'Utilização da interface de utilizador web do Spark para monitorizar o progresso das tarefas e visualizar os logs de erro. Essa abordagem permitiu identificar com precisão as causas das falhas, como `out of memory` ou `tasks` que demoraram a executar, possibilitando a otimização do código e a correção dos problemas.',
     tools: ['Apache Spark', 'PySpark', 'SQL'],
     why: 'A escolha do "Apache Spark" deveu-se à sua capacidade de processamento em memória e à sua UI web integrada. Ao invés de frameworks mais antigos como o MapReduce, o Spark oferece uma ferramenta de monitorização visual que facilita o `debug` de aplicações distribuídas. A interface web do Spark permite visualizar o fluxo de execução das tarefas, o uso de recursos e os `stack traces` de erros, acelerando o diagnóstico e a otimização de forma significativa.'
+  },
+  {
+    id: 7,
+    title: 'ASun Browser AI Agent',
+    scenario: 'Desenvolvimento de um sistema de navegador autónomo sofisticado, capaz de navegar em ambientes web complexos para automação e avaliação de segurança.',
+    objectives: ['Automatizar tarefas repetitivas de preenchimento de formulários web.', 'Realizar auditorias de segurança automatizadas (pentesting) em interfaces web.', 'Orquestrar eficientemente múltiplos agentes de IA.'],
+    challenge: 'Navegar em estruturas DOM dinâmicas e lidar com protocolos de segurança mantendo alta velocidade e fiabilidade em diferentes ambientes web.',
+    solution: 'Implementação de uma arquitetura de microserviços utilizando Python/FastAPI para a orquestração de agentes. Desenvolvimento de módulos específicos: um para automação de navegação DOM e outro especializado na identificação de vulnerabilidades de segurança em frontends e backends.',
+    tools: ['Python', 'FastAPI', 'React', 'Agentic AI', 'LLMs', 'Render'],
+    why: 'O FastAPI forneceu a performance necessária para a coordenação de agentes em tempo real, enquanto o React ofereceu um dashboard de controlo responsivo. O uso de microserviços permite que os agentes especializados sejam escalados de forma independente.'
+  },
+  {
+    id: 8,
+    title: 'JDM Mock Server',
+    scenario: 'Criação de uma ferramenta de desenvolvedor para simular ambientes de backend, permitindo que as equipas de frontend construam e testem sem uma API de produção ativa.',
+    objectives: ['Simular respostas complexas de APIs REST.', 'Fornecer suporte multi-tenant para ambientes isolados.', 'Implementar um motor de base de dados leve.'],
+    challenge: 'Projetar um motor que suporte rotas personalizadas e relações semelhantes a tabelas (como o SQL.js) dentro de um runtime Node.js.',
+    solution: 'Construção de um backend de alta performance utilizando Express.js. Projeto de um motor de base de dados modular que fornece a cada utilizador um ambiente isolado baseado em JSON para simular relações de dados.',
+    tools: ['Node.js', 'Express', 'JSON', 'Mocking Engine', 'Render'],
+    why: 'O Node.js e o Express são padrões da indústria para o desenvolvimento de APIs, tornando o servidor mock altamente compatível com fluxos de trabalho de frontend modernos. O motor baseado em JSON permite iterações rápidas sem o overhead de um RDBMS completo.'
+  },
+  {
+    id: 9,
+    title: 'Radar Sentinel (Discord Bot)',
+    scenario: 'Um bot de inteligência financeira para o Discord que monitoriza mercados globais, identifica tendências e fornece análise algorítmica em tempo real.',
+    objectives: ['Análise de sentimento em tempo real de mercados de cripto e ações.', 'Integração com Discord para alertas instantâneos.', 'Processamento de dados do Yahoo Finance com latência mínima (12.25s).'],
+    challenge: 'Correlacionar indicadores financeiros díspares (NASDAQ, DXY, Bitcoin, fluxos de Ouro) em insights de mercado acionáveis em poucos segundos.',
+    solution: 'Desenvolvimento de uma ferramenta baseada em IA utilizando Python e APSchedule para automação de tarefas. Integração de webhooks do Discord para relatórios em tempo real de radares de setor (ex: foco em IA Agêntica nos EUA) e tendências de liquidez.',
+    tools: ['Python', 'APSchedule', 'Discord API', 'Yahoo Finance', 'LLM Fine-tuning'],
+    why: 'O ecossistema financeiro do Python e a acessibilidade do Discord tornam-no a plataforma perfeita para entregar insights de dados complexos a traders e instituições de forma rápida.'
   }
 ];
 

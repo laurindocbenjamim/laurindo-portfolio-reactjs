@@ -32,6 +32,30 @@ const PROFILE_IMAGES = [
 
 const PROJECTS = [
   {
+    title: "ASun Browser AI Agent",
+    description: "An intelligent browser agent with two specialized modules: an automation agent for form fulfillment and a pentesting agent for security testing.",
+    demo: "https://aosbrowser-002.onrender.com",
+    github: "https://github.com/laurindocbenjamim",
+    tags: ["AI Agent", "Automation", "Pentesting", "FastAPI", "React"],
+    type: "AI / Security"
+  },
+  {
+    title: "JDM Mock Server",
+    description: "A high-performance, multi-tenant JSON mock backend service. Create routes and tables like a database to accelerate frontend prototyping.",
+    demo: "https://jdm-mock-server.onrender.com",
+    github: "https://github.com/laurindocbenjamim",
+    tags: ["Node.js", "Express", "API Mocking", "Database"],
+    type: "Backend / API"
+  },
+  {
+    title: "Radar Sentinel (Discord Bot)",
+    description: "AI-driven algorithmic analysis bot that processes global indicators (USA Agentic AI, NASDAQ, DXY, Crypto) to deliver instant market insights.",
+    demo: "https://discord.com/oauth2/authorize?client_id=1489759723124297930&permissions=268814336&integration_type=0&scope=bot+applications.commands",
+    github: "https://github.com/laurindocbenjamim",
+    tags: ["AI", "Financial Analysis", "Discord Bot", "Sentiment Analysis"],
+    type: "AI / Finance"
+  },
+  {
     title: "MSpeeText: converter",
     description: "Convert audio speech into text using AI models with precision and high performance.",
     demo: "https://laurindocbenjamim.github.io/laurindo-c-benjamim-portfolio/portfolio/convert-speech-to-text.html",
@@ -146,10 +170,10 @@ const PROJECTS = [
 ];
 
 const SKILLS = [
-  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Bootstrap"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
-  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "Java", "PHP (Pure/Laravel)", "PostgreSQL", "MySQL", "Hadoop/Hive", "Databricks", "Data Lake/Lakehouse"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
-  { category: "DevOps & Cloud", items: ["Docker", "Git", "Nginx", "Keycloak", "Apache Airflow", "Apache Spark", "Data Fabric"], icon: <Server className="w-5 h-5 text-amber-500" /> },
-  { category: "AI & Science", items: ["OpenAI API", "Watson AI", "Gemini API", "Speech-to-Text", "Voice Cloning"], icon: <Brain className="w-5 h-5 text-purple-500" /> }
+  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Bootstrap", "JavaScript"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
+  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "Java", "PHP (Pure/Laravel)", "Node.js (Express)", "PostgreSQL", "MySQL", "MongoDB", "Redis", "Hadoop/Hive", "Microsoft Fabric"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
+  { category: "Cloud & DevOps", items: ["Azure", "AWS", "GCP", "Docker", "Git", "Nginx", "CI/CD", "Apache Airflow", "Apache Spark", "Apache Kafka"], icon: <Server className="w-5 h-5 text-amber-500" /> },
+  { category: "AI & ML", items: ["OpenAI API", "Gemini API", "Watson AI", "NLP", "R", "MatLAB", "Machine Learning (SparkML)"], icon: <Brain className="w-5 h-5 text-purple-500" /> }
 ];
 
 function Home() {
@@ -171,65 +195,67 @@ function Home() {
     : PROJECTS.filter(p => p.type === activeFilter);
 
   const navLinks = [
-    { name: "About", href: "#about" },
+    { name: "About", href: "#hero" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Showcases", href: "/shocases" },
     { name: "Contact", href: "#contact" }
   ];
 
   const EXPERIENCES = [
     {
-      role: "Senior Data Engineer (Databricks & Lakehouse)",
-      company: "Modern Data Platforms",
-      period: "2022 - 2023",
-      desc: "Architected scalable Lakehouse solutions using Databricks and Delta Lake. Engineered high-performance Spark pipelines for ETL/ELT processes and implemented automated data quality frameworks.",
+      role: "Full Stack Software Engineer",
+      company: "Camisa10",
+      period: "March 2026 – Present",
+      desc: "Architecting and developing a high-performance e-commerce platform for sports apparel using FastAPI and React.js.",
       bullets: [
-        "Migrated legacy on-premise data pipelines to Databricks Lakehouse architecture, improving processing speed by 45%.",
-        "Implemented robust Data Lake storage strategies with prioritized security and medallion architecture (Bronze/Silver/Gold).",
-        "Optimized complex Spark SQL and PySpark jobs, significantly reducing cloud compute costs."
+        "Integrating Stripe API for secure payment processing and managing complex data states with PostgreSQL, MongoDB, and Redis.",
+        "Managing deployment and continuous integration on Render, overseen the final 30% of the production launch phase."
       ]
     },
     {
-      role: "Data Solutions Architect (Data Fabric)",
-      company: "Enterprise Integration",
-      period: "2021 - 2022",
-      desc: "Designed and deployed Data Fabric frameworks to unify disparated data sources and enable real-time metadata-driven data orchestration across hybrid cloud environments.",
+      role: "Full Stack Software Engineer",
+      company: "Elinara Lab.",
+      period: "January 2026 – April 2026",
+      desc: "Engineered a SaaS platform for Agentic AI, orchestrating 5 specialized agents across a microservices architecture.",
       bullets: [
-        "Engineered automated metadata discovery and generation pipelines to support semantic data layers.",
-        "Implemented Data Fabric concepts for unified data governance, access control, and self-service analytics.",
-        "Collaborated on harmonizing data across multi-cloud environments using advanced orchestration tools."
+        "Implemented real-time communication protocols using Websockets and Webhooks, optimized by Redis caching.",
+        "Built and integrated custom AI Agents leveraging various LLMs, Python, and FastAPI, with a frontend powered by React and Vite."
       ]
     },
     {
-      role: "Trainer",
+      role: "Freelance Data Engineer",
+      company: "Various Projects",
+      period: "August 2024 – January 2025",
+      desc: "Delivered data-driven solutions and machine learning models for diverse industrial and clinical requirements.",
+      bullets: [
+        "Developed and deployed a machine learning model for stroke prediction achieving 86% accuracy leveraging R for preprocessing.",
+        "Designed and implemented ETL pipelines to process waste management data from diverse sources including APIs, CSV, JSON, and SQL.",
+        "Engineered a Machine Learning Pipeline for Airfoil Noise Prediction using SparkML achieving 89% accuracy."
+      ]
+    },
+    {
+      role: "Python and Web Development Trainer",
       company: "Charkcoders, Gaia",
-      period: "September 2023 – May 2024",
-      desc: "Python Developer trainer for children aged 11-17 (75% success), Web Developer trainer (90% success), and Game Developer trainer (68% success).",
+      period: "September 2023 – December 2024",
+      desc: "Trained students in Python and web development, achieving a 75-90% success rate in skills acquisition.",
       bullets: [
-        "Python Developer trainer for children aged 11 to 17 years old, where 75% of them show good learning.",
-        "Web Developer trainer for children aged 11 to 17 years old, where 90% of them show good learning.",
-        "Game Developer trainer for children aged 8 to 17 years old, where 68% of them show good learning."
+        "Python Developer trainer for children aged 11 to 17 years old.",
+        "Web Developer trainer for children aged 11 to 17 years old.",
+        "Game Developer trainer for children aged 8 to 17 years old."
       ]
     },
     {
-      role: "Senior Software Developer (Desktop)",
+      role: "Full-Stack Developer",
       company: "IPPE Lubango (Angola)",
       period: "January 2018 - November 2021",
-      desc: "Developed a desktop file management application with 98% of requirements implemented and 89% acceptance."
-    },
-    {
-      role: "Senior Software Developer (Web)",
-      company: "IPPE Lubango (Angola)",
-      period: "January 2018 - November 2021",
-      desc: "Developed an academic management platform using pure PHP, HTML, CSS, Bootstrap, JQuery, and Ajax (75% acceptance). Modernized manual payment registrations."
+      desc: "Developed a file management system using Java 10, Spring Boot MVC, Bootstrap, and Javascript, achieving a 98% requirement implementation rate."
     },
     {
       role: "Full Stack Developer",
       company: "ELT - Contas, lda - Lubango",
       period: "March 2019 - September 2021",
-      desc: "Developed a Shopping web application with 70% of requirements implemented using PHP/Laravel and JQuery (Project discontinued)."
+      desc: "Developed a shopping web application using Laravel 8, Bootstrap, Javascript and JQuery (Project discontinued)."
     }
   ];
 
@@ -582,9 +608,6 @@ function Home() {
             <div>
               <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Portfolio</p>
               <h2 className="text-4xl font-display font-bold text-white leading-tight">Featured Projects</h2>
-              <Link to="/shocases" className="inline-flex items-center gap-2 mt-4 text-brand-primary hover:text-white transition-colors text-sm font-bold">
-                View Project Slides <ChevronRight className="w-4 h-4" />
-              </Link>
             </div>
             
             {/* Filter buttons */}
@@ -783,7 +806,6 @@ export default function App() {
     { name: "About", href: "/#hero" },
     { name: "Experience", href: "/#experience" },
     { name: "Projects", href: "/#projects" },
-    { name: "Shocases", href: "/shocases" },
     { name: "Skills", href: "/#skills" },
     { name: "Contact", href: "/#contact" }
   ];
@@ -886,7 +908,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shocases" element={<Showcases />} />
+        <Route path="/showcases" element={<Showcases />} />
       </Routes>
     </div>
   );
