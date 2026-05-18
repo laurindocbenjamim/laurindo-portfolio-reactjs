@@ -18,7 +18,9 @@ import {
   Server,
   Activity,
   BarChart3,
-  Presentation
+  Presentation,
+  Search,
+  Tag
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
@@ -170,16 +172,18 @@ const PROJECTS = [
 ];
 
 const SKILLS = [
-  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Bootstrap", "JavaScript"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
-  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "Java", "PHP (Pure/Laravel)", "Node.js (Express)", "PostgreSQL", "MySQL", "MongoDB", "Redis", "Hadoop/Hive", "Microsoft Fabric"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
-  { category: "Cloud & DevOps", items: ["Azure", "AWS", "GCP", "Docker", "Git", "Nginx", "CI/CD", "Apache Airflow", "Apache Spark", "Apache Kafka"], icon: <Server className="w-5 h-5 text-amber-500" /> },
-  { category: "AI & ML", items: ["OpenAI API", "Gemini API", "Watson AI", "NLP", "R", "MatLAB", "Machine Learning (SparkML)"], icon: <Brain className="w-5 h-5 text-purple-500" /> }
+  { category: "Backend & Data", items: ["Python (FastAPI/Flask)", "PostgreSQL", "MongoDB", "Redis", "Java", "PHP (Laravel)", "Node.js (Express)", "Hadoop/Hive", "Microsoft Fabric"], icon: <Database className="w-5 h-5 text-emerald-500" /> },
+  { category: "AI & ML", items: ["Python", "MatLAB (Image/Signal Processing)", "Machine Learning (SparkML)", "Gemini API", "OpenAI API", "NLP", "R"], icon: <Brain className="w-5 h-5 text-purple-500" /> },
+  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript"], icon: <Monitor className="w-5 h-5 text-blue-500" /> },
+  { category: "Cloud & DevOps", items: ["Azure", "AWS", "GCP", "Docker", "Git", "CI/CD", "Nginx", "Apache Airflow", "Apache Spark"], icon: <Server className="w-5 h-5 text-amber-500" /> }
 ];
 
 function Home() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState("All");
   const [selectedMobileBadge, setSelectedMobileBadge] = useState<number | null>(null);
 
   useEffect(() => {
@@ -190,9 +194,15 @@ function Home() {
   }, []);
 
   const projectTypes = ["All", ...new Set(PROJECTS.map(p => p.type))];
-  const filteredProjects = activeFilter === "All" 
-    ? PROJECTS 
-    : PROJECTS.filter(p => p.type === activeFilter);
+  const allTags = ["All", ...new Set(PROJECTS.flatMap(p => p.tags))].sort();
+
+  const filteredProjects = PROJECTS.filter(p => {
+    const matchesFilter = activeFilter === "All" || p.type === activeFilter;
+    const matchesTag = selectedTag === "All" || p.tags.includes(selectedTag);
+    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          p.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesFilter && matchesTag && matchesSearch;
+  });
 
   const navLinks = [
     { name: "About", href: "#hero" },
@@ -285,7 +295,7 @@ function Home() {
                 Building <span className="text-brand-primary italic">scalable</span> solutions with AI & Modern Tech
               </h1>
               <p className="text-base sm:text-lg text-neutral-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed text-center lg:text-left">
-                Hi, I'm <span className="text-white font-semibold">Laurindo C. Benjamim</span>. A Software Engineer dedicated to crafting beautiful, high-performance web applications and intelligent automated systems.
+                Hi, I'm <span className="text-white font-semibold">Laurindo C. Benjamim</span>. A Software Engineer specializing in <span className="text-white">Python</span>, <span className="text-white">PostgreSQL</span>, and <span className="text-white">MongoDB</span>, with expertise in <span className="text-white">MatLAB</span> for advanced signal and image processing.
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                 <a 
@@ -498,91 +508,84 @@ function Home() {
       {/* Experience Section */}
       <motion.section 
         id="experience" 
-        className="py-20 relative bg-neutral-950 scroll-mt-16"
+        className="py-24 relative bg-neutral-950 scroll-mt-16 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[150px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4"
+            className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-4"
           >
             <div>
               <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Career Journey</p>
-              <h2 className="text-4xl font-display font-bold text-white">Professional Experience</h2>
+              <h2 className="text-5xl font-display font-bold text-white">Professional Experience</h2>
             </div>
-            <a href="/cv.pdf" download className="text-sm font-semibold border-b-2 border-white pb-1 hover:text-neutral-400 hover:border-neutral-400 transition-colors text-white">
+            <a href="/cv.pdf" download className="flex items-center gap-2 text-sm font-bold bg-white/5 hover:bg-white/10 px-6 py-3 rounded-xl border border-white/10 transition-all text-white">
               Download Full CV
+              <ChevronRight className="w-4 h-4" />
             </a>
           </motion.div>
 
-          <div className="space-y-12 relative before:absolute before:left-[17px] sm:before:left-[21px] md:before:left-1/2 before:top-0 before:bottom-0 before:w-px before:bg-neutral-800">
+          <div className="space-y-24 relative max-w-5xl mx-auto">
+            {/* The vertical timeline line */}
+            <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-primary via-neutral-800 to-transparent md:-translate-x-1/2 transform h-full" />
+            
             {EXPERIENCES.map((exp, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className={`relative flex flex-col md:flex-row items-center gap-12 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className="flex-1 w-full md:text-right hidden md:block">
-                  {idx % 2 === 0 ? (
-                    <div className="pr-12">
-                      <p className="text-brand-primary font-bold mb-1 font-mono text-xs">{exp.period}</p>
-                      <h3 className="text-xl font-bold mb-2 text-white">{exp.role}</h3>
-                      {exp.bullets ? (
-                        <ul className="text-neutral-500 text-sm space-y-1 text-right">
-                          {exp.bullets.map((bullet, i) => (
-                            <li key={i} className="leading-relaxed">{bullet}</li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
-                      )}
-                    </div>
-                  ) : null}
-                </div>
-                
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-neutral-900 border-4 border-neutral-800 shadow-sm z-10 flex items-center justify-center shrink-0">
-                  <div className="w-2 h-2 rounded-full bg-white" />
+                {/* Timeline Circle */}
+                <div className="absolute left-[20px] md:left-1/2 top-1.5 md:top-1/2 w-10 h-10 bg-neutral-950 border border-neutral-800 rounded-full z-20 md:-translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center group shadow-2xl">
+                   <div className="w-3 h-3 bg-white rounded-full group-hover:scale-125 transition-transform duration-300 shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
                 </div>
 
-                <div className="flex-1 w-full text-left">
-                  <div className={`${idx % 2 !== 0 ? 'md:pl-12' : 'pl-12 md:pl-0'}`}>
-                    <div className="md:hidden mb-1">
-                       <p className="text-brand-primary font-bold mb-1 font-mono text-xs">{exp.period}</p>
-                       <h3 className="text-xl font-bold mb-2 text-white">{exp.role}</h3>
-                    </div>
-                    {idx % 2 !== 0 ? (
-                      <div className="hidden md:block">
-                        <p className="text-brand-primary font-bold mb-1 font-mono text-xs">{exp.period}</p>
-                        <h3 className="text-xl font-bold mb-2 text-white">{exp.role}</h3>
-                        {exp.bullets ? (
-                          <ul className="text-neutral-500 text-sm space-y-1">
-                            {exp.bullets.map((bullet, i) => (
-                              <li key={i} className="leading-relaxed">{bullet}</li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <p className="text-neutral-500 text-sm leading-relaxed">{exp.desc}</p>
-                        )}
-                      </div>
-                    ) : null}
-                    <div className="md:hidden text-neutral-500 text-sm leading-relaxed">
-                      {exp.bullets ? (
-                        <ul className="space-y-1">
-                          {exp.bullets.map((bullet, i) => (
-                            <li key={i}>{bullet}</li>
-                          ))}
-                        </ul>
-                      ) : exp.desc}
-                    </div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-neutral-400 mt-4">{exp.company}</p>
+                {/* Left Side (Period & Role Header for desktop) */}
+                <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${idx % 2 === 0 ? 'md:pl-20 text-left' : 'md:pr-20 md:text-right text-left'}`}>
+                  <motion.span 
+                    initial={{ scale: 0.9 }}
+                    whileInView={{ scale: 1 }}
+                    className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 text-neutral-300 text-[10px] sm:text-xs font-bold tracking-[0.2em] rounded-full mb-4"
+                  >
+                    {exp.period}
+                  </motion.span>
+                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-2 leading-tight">{exp.role}</h3>
+                  <div className={`flex items-center gap-2 mb-4 text-brand-primary font-bold tracking-widest text-[10px] uppercase ${idx % 2 !== 0 ? 'md:justify-end' : ''}`}>
+                    <Server className="w-3 h-3" />
+                    {exp.company}
                   </div>
+                </div>
+
+                {/* Right Side (Details Card) */}
+                <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${idx % 2 === 0 ? 'md:pr-20' : 'md:pl-20'}`}>
+                  <motion.div 
+                    whileHover={{ y: -5 }}
+                    className="p-8 bg-neutral-900/40 backdrop-blur-sm border border-neutral-800/50 rounded-[2rem] hover:border-brand-primary/50 transition-all duration-300 shadow-xl"
+                  >
+                    {exp.bullets ? (
+                      <ul className="space-y-4">
+                        {exp.bullets.map((bullet, i) => (
+                          <li key={i} className="flex gap-4 text-neutral-400 text-sm leading-relaxed group/item">
+                            <div className="w-1.5 h-1.5 bg-brand-primary rounded-full shrink-0 mt-2 group-hover/item:scale-150 transition-transform" />
+                            <span className="group-hover/item:text-neutral-200 transition-colors">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-neutral-400 text-sm leading-relaxed">{exp.desc}</p>
+                    )}
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -603,28 +606,84 @@ function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8"
+            className="flex flex-col gap-8 mb-12"
           >
-            <div>
-              <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Portfolio</p>
-              <h2 className="text-4xl font-display font-bold text-white leading-tight">Featured Projects</h2>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+              <div>
+                <p className="text-brand-primary font-bold uppercase tracking-widest text-xs mb-3">Portfolio</p>
+                <h2 className="text-4xl font-display font-bold text-white leading-tight">Featured Projects</h2>
+              </div>
+              
+              {/* Search Bar */}
+              <div className="relative w-full md:w-80">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search projects..."
+                  className="w-full bg-neutral-800 border border-neutral-700 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-all text-white placeholder:text-neutral-500"
+                />
+              </div>
             </div>
-            
-            {/* Filter buttons */}
-            <div className="flex flex-wrap gap-2 justify-center md:justify-end">
-              {projectTypes.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setActiveFilter(type)}
-                  className={`px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
-                    activeFilter === type 
-                    ? "bg-white text-black shadow-md" 
-                    : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-white"
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
+
+            <div className="space-y-6">
+              {/* Project Type Categories */}
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2 text-neutral-500">
+                  <Globe className="w-3 h-3" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Categories</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {projectTypes.map((type) => (
+                    <button
+                      key={type}
+                      onClick={() => setActiveFilter(type)}
+                      className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                        activeFilter === type 
+                        ? "bg-white text-black shadow-lg shadow-white/10" 
+                        : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-white"
+                      }`}
+                    >
+                      {type}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tag Filtering */}
+              <div className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Tag className="w-20 h-20 rotate-12" />
+                </div>
+                <div className="flex items-center gap-2 text-neutral-500 mb-4">
+                  <Tag className="w-3 h-3" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Filter by Technology</span>
+                </div>
+                <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto pr-2 custom-scrollbar">
+                  {allTags.map((tag) => (
+                    <button
+                      key={tag}
+                      onClick={() => setSelectedTag(tag)}
+                      className={`px-3 py-1.5 rounded-lg text-[10px] font-mono transition-all border ${
+                        selectedTag === tag 
+                        ? "bg-brand-primary/20 border-brand-primary text-brand-primary font-bold" 
+                        : "bg-neutral-800 border-neutral-700 text-neutral-400 hover:border-neutral-600 hover:text-neutral-200"
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+                {selectedTag !== "All" && (
+                   <button 
+                    onClick={() => setSelectedTag("All")}
+                    className="mt-4 text-[10px] font-bold text-brand-primary hover:underline"
+                   >
+                     Clear Tag Filter
+                   </button>
+                )}
+              </div>
             </div>
           </motion.div>
 
@@ -633,48 +692,65 @@ function Home() {
             className="grid md:grid-cols-2 gap-8"
           >
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, idx) => (
-                <motion.div
-                  key={project.title}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3 }}
-                  className="group bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-800 hover:border-brand-primary transition-all hover:shadow-2xl hover:shadow-brand-primary/5"
-                >
-                  <div className="p-8">
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="inline-block px-3 py-1 bg-neutral-800 rounded-lg text-xs font-bold text-neutral-400 uppercase tracking-widest">
-                         {project.type}
-                      </div>
-                      <div className="flex gap-2">
-                        {project.github && (
-                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="GitHub Repository">
-                            <Github className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
+              {filteredProjects.length > 0 ? (
+                filteredProjects.map((project, idx) => (
+                  <motion.div
+                    key={project.title}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3 }}
+                    className="group bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-800 hover:border-brand-primary transition-all hover:shadow-2xl hover:shadow-brand-primary/5"
+                  >
+                    <div className="p-8">
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="inline-block px-3 py-1 bg-neutral-800 rounded-lg text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                           {project.type}
+                        </div>
+                        <div className="flex gap-2">
+                          {project.github && (
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="GitHub Repository">
+                              <Github className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
+                            </a>
+                          )}
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="Live Demo">
+                            <ExternalLink className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
                           </a>
-                        )}
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="Live Demo">
-                          <ExternalLink className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
-                        </a>
+                        </div>
+                      </div>
+                      <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
+                      <p className="text-neutral-400 mb-6 line-clamp-2">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="text-[10px] font-mono font-bold px-2 py-1 bg-neutral-800 border border-neutral-700 rounded text-neutral-400">
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
-                    <p className="text-neutral-400 mb-6 line-clamp-2">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map(tag => (
-                        <span key={tag} className="text-[10px] font-mono font-bold px-2 py-1 bg-neutral-800 border border-neutral-700 rounded text-neutral-400">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="h-2 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="h-2 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </motion.div>
+                ))
+              ) : (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="col-span-full py-20 text-center bg-neutral-900/30 rounded-[2.5rem] border border-dashed border-neutral-800"
+                >
+                  <Search className="w-12 h-12 text-neutral-700 mx-auto mb-4" />
+                  <p className="text-neutral-500 font-medium">No projects found matching your search or filters.</p>
+                  <button 
+                    onClick={() => { setSearchQuery(""); setSelectedTag("All"); setActiveFilter("All"); }}
+                    className="mt-6 px-6 py-2 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full text-sm font-bold transition-colors"
+                  >
+                    Clear all filters
+                  </button>
                 </motion.div>
-              ))}
+              )}
             </AnimatePresence>
           </motion.div>
         </div>
