@@ -15,6 +15,13 @@ CORE SKILLS
 
 PROFESSIONAL EXPERIENCE
 
+FULL STACK SOFTWARE ENGINEER (PROJECT LEAD - NUTRISENTINEL AI)
+NutriSentinel AI | 2026 - Present
+- Engineered a high-performance wellness and health-tracking platform using FastAPI and React to scan and analyze chemical reagent strips.
+- Developed custom computer vision image processing algorithms in Python to robustly digitize biometrics under varying lighting conditions.
+- Integrated LLMs and AI optimization algorithms to deliver instant personalized nutritional insights and biometric health recommendations.
+- Containerized the full application stack with Docker and deployed the production system seamlessly on Render.
+
 FULL STACK SOFTWARE ENGINEER (PROJECT LEAD - SPECTRALAB)
 SpectraLab | 2026 - Present
 - Architected SpectraLab using FastAPI and Redis, a high-performance modular monolithic web application for spectroscopy analysis.
@@ -41,7 +48,7 @@ Azure, Databricks & Big Data Solutions | May 2025 - Oct 2025
 - Managed and processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical workloads.
 
 REAL-TIME DATA PIPELINES (PERSONAL PROJECTS)
-Event-Driven Architecture | Jan 2025 - Present
+Event-Driven Architecture | April 2025 - Sept 2025
 - Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput message ingestion and Spark Streaming for live data processing.
 - Integrated multiple financial APIs into a resilient Kafka cluster, ensuring zero data loss during peak volatility periods.
 - Developed automated alerting systems triggered by Spark processing windows, delivering sub-second insights to end-users.

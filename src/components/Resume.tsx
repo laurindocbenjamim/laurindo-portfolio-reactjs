@@ -29,6 +29,13 @@ CORE SKILLS
 
 PROFESSIONAL EXPERIENCE
 
+Full Stack Software Engineer (Project Lead - NutriSentinel AI)
+NutriSentinel AI | 2026 - Present
+- Engineered high-performance health tracking software using FastAPI and React to scan and evaluate chemical reagent strips.
+- Implemented computer vision algorithms in Python to digitize biometrics under varying lighting conditions.
+- Integrated AI-driven health optimization models to process biometrics real-time and deliver automated recommendations.
+- Containerized using Docker and deployed the full production-ready system on Render.
+
 Full Stack Software Engineer (Project Lead - SpectraLab)
 SpectraLab | 2026 - Present
 - Architected SpectraLab using FastAPI and Redis, a high-performance modular monolithic web application for spectroscopy analysis.
@@ -55,7 +62,7 @@ Azure, Databricks & Big Data Solutions | May 2025 - Oct 2025
 - Processed massive datasets using Hadoop (HDFS/Hive), optimizing storage and query performance for analytical reporting.
 
 Data Pipeline Architect (Personal Projects)
-Real-time Streaming & Kafka | Jan 2025 - Present
+Real-time Streaming & Kafka | April 2025 - Sept 2025
 - Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput ingestion and Spark Streaming for live processing.
 - Integrated financial APIs into a resilient Kafka cluster, ensuring zero data loss during high-volatility periods.
 - Developed sub-second alerting systems triggered by Spark stateful processing windows.
@@ -174,7 +181,18 @@ CERTIFICATIONS
         <section className="mb-10">
           <h2 className="text-base font-bold border-b border-slate-200 pb-1.5 mb-6 uppercase tracking-widest text-slate-900">Professional Experience</h2>
           
-          <div className="space-y-2">
+          <div className="space-y-4">
+            <ResumeExperienceItem 
+              title="Full Stack Software Engineer (Project Lead)"
+              company="NutriSentinel AI - Smart Urinalysis"
+              date="2026 - Present"
+              bullets={[
+                "Engineered a high-performance wellness and health-tracking platform using FastAPI and React to scan and analyze chemical reagent strips.",
+                "Developed custom computer vision image processing algorithms in Python to robustly digitize biometrics under varying lighting conditions.",
+                "Integrated LLMs and AI optimization algorithms to deliver instant personalized nutritional insights and biometric health recommendations.",
+                "Containerized the full application stack with Docker and deployed the production system seamlessly on Render."
+              ]}
+            />
             <ResumeExperienceItem 
               title="Full Stack Software Engineer (Project Lead)"
               company="SpectraLab - Spectroscopy Analysis"
@@ -219,7 +237,7 @@ CERTIFICATIONS
             <ResumeExperienceItem 
               title="Data Pipeline Architect (Personal Projects)"
               company="Real-time Streaming & Kafka"
-              date="Jan 2025 - Present"
+              date="April 2025 - Sept 2025"
               bullets={[
                 "Engineered a real-time market sentiment analyzer using Apache Kafka for high-throughput ingestion and Spark Streaming for live processing.",
                 "Integrated financial APIs into a resilient Kafka cluster, ensuring zero data loss during high-volatility periods.",

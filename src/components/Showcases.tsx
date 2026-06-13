@@ -108,6 +108,20 @@ const projectsData = [
     solution: 'Arquitetura monolítica modular construída com Python para o processamento de dados e React para a interface. Integração de bibliotecas especializadas para execução de algoritmos RAMAN e PCA, fornecendo feedback visual instantâneo através de gráficos d3.js interactivos.',
     tools: ['Python', 'React', 'Chemometrics', 'PCA', 'PLS-DA', 'd3.js', 'Modular Monolith'],
     why: 'A escolha por uma arquitetura monolítica modular permitiu um desenvolvimento ágil sem a complexidade de rede de microserviços, garantindo que o processamento intensivo de dados espectrais fosse realizado com a menor latência possível.'
+  },
+  {
+    id: 11,
+    title: 'NutriSentinel AI',
+    scenario: 'Desenvolvimento de uma plataforma inteligente de bem-estar e monitorização de saúde que automatiza a leitura de tiras de reagentes químicos através de visão computacional.',
+    objectives: [
+      'Digitalizar de forma automatizada leituras de tiras de reagente sob variação de luz.',
+      'Identificar de forma fiável marcadores essenciais (níveis de hidratação, proteínas, pH, etc.).',
+      'Fornecer relatórios biométricos detalhados e sugestões nutricionais personalizadas baseadas em IA.'
+    ],
+    challenge: 'Garantir a exatidão e a calibração de cores dos blocos de reagente em fotos tiradas por câmaras móveis com diferentes focos e níveis de iluminação.',
+    solution: 'Implementação de algoritmos híbridos de calibração cromática em Python, mapeando as cores dos blocos de reagente contra referências estandardizadas de forma determinística, acoplado a um serviço FastAPI em Render para gerar relatórios e recomendações nutricionais dinâmicas.',
+    tools: ['Python', 'FastAPI', 'Computer Vision', 'Image Calibration', 'AI Reasoning', 'Render'],
+    why: 'O ecossistema robusto do Python para processamento de imagem combinado com a alta performance assíncrona do FastAPI garantiu uma plataforma segura e com tempos de resposta abaixo do segundo para o diagnóstico visual.'
   }
 ];
 

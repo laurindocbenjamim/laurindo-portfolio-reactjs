@@ -35,6 +35,14 @@ const PROFILE_IMAGES = [
 
 const PROJECTS = [
   {
+    title: "NutriSentinel AI",
+    description: "Advanced smart health and wellness tracking platform that utilizes computer vision to automatically scan and analyze medical/reagent test strips. Instantly digitizes biometrics to deliver real-time hydration indexes, nutritional markers, and personalized AI-driven health optimization recommendations.",
+    demo: "https://nutrisentinel-ai.onrender.com",
+    github: "https://github.com/laurindocbenjamim/nutri-sentinel-project/blob/main/SMARTurinalysis-main/README.md",
+    tags: ["Python", "Computer Vision", "FastAPI", "AI Consultation", "HealthTech"],
+    type: "AI / Health"
+  },
+  {
     title: "SpectraLab",
     description: "High-performance chemometrics and spectroscopy analysis platform. Modular monolithic architecture supporting .csv/.sp file processing, real-time preprocessing, and PCA/PLS-DA algorithms.",
     demo: "https://ispectdata-ai.onrender.com",
