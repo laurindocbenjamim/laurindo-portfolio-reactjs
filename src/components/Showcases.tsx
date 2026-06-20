@@ -144,7 +144,7 @@ export default function Showcases() {
 
   return (
     <div className="min-h-screen bg-transparent text-neutral-100 flex items-center justify-center p-4 md:p-12 relative z-10">
-      <div className="max-w-4xl w-full bg-neutral-900 rounded-3xl border border-neutral-800 shadow-2xl p-6 md:p-10 flex flex-col items-center">
+      <div className="max-w-4xl w-full bg-neutral-950/45 backdrop-blur-md rounded-[2.5rem] border border-white/5 shadow-[0_12px_40px_rgba(0,0,0,0.55)] p-6 md:p-10 flex flex-col items-center">
         
         <div className="w-full mb-8 flex justify-between items-center border-b border-neutral-800 pb-4">
              <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors flex items-center gap-2">

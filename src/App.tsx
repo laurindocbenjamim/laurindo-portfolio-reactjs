@@ -609,7 +609,7 @@ function Home() {
                 <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${idx % 2 === 0 ? 'md:pr-20' : 'md:pl-20'}`}>
                   <motion.div 
                     whileHover={{ y: -5 }}
-                    className="p-8 bg-neutral-900/40 backdrop-blur-sm border border-neutral-800/50 rounded-[2rem] hover:border-brand-primary/50 transition-all duration-300 shadow-xl"
+                    className="p-8 bg-neutral-950/45 backdrop-blur-md border border-white/5 rounded-[2rem] hover:border-white/15 transition-all duration-300 shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
                   >
                     {exp.bullets ? (
                       <ul className="space-y-4">
@@ -749,20 +749,20 @@ function Home() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3 }}
-                    className="group bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-800 hover:border-brand-primary transition-all hover:shadow-2xl hover:shadow-brand-primary/5"
+                    className="group bg-neutral-950/45 backdrop-blur-md rounded-[2rem] overflow-hidden border border-white/5 hover:border-white/15 transition-all duration-300 hover:shadow-[0_12px_45px_rgba(0,0,0,0.65)]"
                   >
                     <div className="p-8">
                       <div className="flex justify-between items-start mb-6">
-                        <div className="inline-block px-3 py-1 bg-neutral-800 rounded-lg text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                        <div className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-xl text-xs font-semibold text-neutral-300 uppercase tracking-widest">
                            {project.type}
                         </div>
                         <div className="flex gap-2">
                           {project.github && (
-                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="GitHub Repository">
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/5 rounded-full transition-colors group/link" title="GitHub Repository">
                               <Github className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
                             </a>
                           )}
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-neutral-800 rounded-full transition-colors group/link" title="Live Demo">
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/5 rounded-full transition-colors group/link" title="Live Demo">
                             <ExternalLink className="w-5 h-5 text-neutral-500 group-hover/link:text-white" />
                           </a>
                         </div>
@@ -773,7 +773,7 @@ function Home() {
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {project.tags.map(tag => (
-                          <span key={tag} className="text-[10px] font-mono font-bold px-2 py-1 bg-neutral-800 border border-neutral-700 rounded text-neutral-400">
+                          <span key={tag} className="text-[10px] font-mono font-bold px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-neutral-300">
                             {tag}
                           </span>
                         ))}
@@ -824,10 +824,10 @@ function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -5, borderColor: "rgba(255,255,255,0.2)" }}
-                className="p-8 bg-neutral-900 rounded-3xl border border-neutral-800 shadow-sm hover:shadow-md transition-all group"
+                whileHover={{ y: -5 }}
+                className="p-8 bg-neutral-950/45 backdrop-blur-md rounded-[2rem] border border-white/5 shadow-lg hover:shadow-[0_12px_40px_rgba(0,0,0,0.55)] transition-all duration-300 group"
               >
-                <div className="w-12 h-12 bg-neutral-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
                   {skill.icon}
                 </div>
                 <h3 className="font-bold text-lg mb-4 text-white">{skill.category}</h3>
@@ -888,22 +888,22 @@ function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-neutral-900 p-8 lg:p-12 rounded-[2.5rem] border border-neutral-800 shadow-2xl shadow-brand-primary/5"
+              className="bg-neutral-950/45 backdrop-blur-md p-8 lg:p-12 rounded-[2.5rem] border border-white/5 shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
             >
                <form className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Name</label>
-                      <input type="text" className="w-full bg-neutral-800 border border-neutral-700 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-neutral-500 transition-colors text-white" placeholder="John Doe" />
+                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all text-white focus:bg-white/[0.08]" placeholder="John Doe" />
                     </div>
                     <div className="space-y-2">
-                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Email</label>
-                       <input type="email" className="w-full bg-neutral-800 border border-neutral-700 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-neutral-500 transition-colors text-white" placeholder="john@example.com" />
+                        <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Email</label>
+                        <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all text-white focus:bg-white/[0.08]" placeholder="john@example.com" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Message</label>
-                    <textarea rows={4} className="w-full bg-neutral-800 border border-neutral-700 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-neutral-500 transition-colors resize-none text-white" placeholder="Tell me about your project..." />
+                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all resize-none text-white focus:bg-white/[0.08]" placeholder="Tell me about your project..." />
                   </div>
                   <button className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-[0.98]">
                     Send Message
@@ -975,23 +975,23 @@ export default function App() {
 
       <div className="relative z-10 flex flex-col min-h-screen">
         {!["/cv"].includes(location.pathname) && (
-          <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/40 backdrop-blur-md">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center h-16">
+          <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 border border-white/10 bg-neutral-900/65 backdrop-blur-xl rounded-full w-[calc(100%-2rem)] max-w-4xl shadow-[0_12px_40px_rgba(0,0,0,0.6)] transition-all duration-300">
+            <div className="px-6">
+              <div className="flex justify-between items-center h-14">
                 <Link to="/" className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                    <span className="text-black font-display font-bold text-lg">L</span>
+                  <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                    <span className="text-black font-display font-bold text-sm">L</span>
                   </div>
-                  <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
+                  <span className="font-display font-semibold text-base tracking-tight text-white hover:text-purple-300 transition-colors">Benjamim.dev</span>
                 </Link>
                 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-6">
                   {navLinks.map((link) => (
                     link.href.startsWith("/#") ? (
                        <a 
                         key={link.name} 
                         href={link.href} 
-                        className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+                        className="text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-white transition-colors"
                       >
                         {link.name}
                       </a>
@@ -999,7 +999,7 @@ export default function App() {
                       <Link 
                         key={link.name} 
                         to={link.href} 
-                        className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+                        className="text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-white transition-colors"
                       >
                         {link.name}
                       </Link>
@@ -1007,17 +1007,17 @@ export default function App() {
                   ))}
                   <a 
                     href="#contact" 
-                    className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
+                    className="bg-white text-black px-4 py-1.5 rounded-full text-xs font-bold hover:bg-neutral-200 transition-colors shadow-md"
                   >
                     Hire Me
                   </a>
                 </div>
 
                 <button 
-                  className="md:hidden p-2 text-neutral-400 hover:text-white"
+                  className="md:hidden p-2 text-neutral-300 hover:text-white"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
-                  {isMenuOpen ? <X /> : <Menu />}
+                  {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </button>
               </div>
             </div>
@@ -1025,19 +1025,19 @@ export default function App() {
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-16 left-0 right-0 bg-neutral-900/95 border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-4 md:hidden backdrop-blur-xl"
                 >
-                  <div className="px-4 py-6 space-y-4">
+                  <div className="space-y-3">
                     {navLinks.map((link) => (
                        link.href.startsWith("/#") ? (
                         <a 
                           key={link.name} 
                           href={link.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className="block text-lg font-medium text-neutral-200 hover:text-white"
+                          className="block text-sm font-semibold uppercase tracking-wider text-neutral-200 hover:text-white hover:bg-white/5 py-2 px-4 rounded-xl transition-all"
                         >
                           {link.name}
                         </a>
@@ -1046,7 +1046,7 @@ export default function App() {
                           key={link.name} 
                           to={link.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className="block text-lg font-medium text-neutral-200 hover:text-white"
+                          className="block text-sm font-semibold uppercase tracking-wider text-neutral-200 hover:text-white hover:bg-white/5 py-2 px-4 rounded-xl transition-all"
                         >
                           {link.name}
                         </Link>
