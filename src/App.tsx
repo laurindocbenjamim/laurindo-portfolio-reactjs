@@ -20,7 +20,8 @@ import {
   BarChart3,
   Presentation,
   Search,
-  Tag
+  Tag,
+  ArrowUp
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
@@ -359,7 +360,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0 z-0 flex items-center justify-center"
+              className="relative aspect-square h-[260px] lg:h-[320px] mx-auto lg:ml-auto lg:mr-0 z-0 flex items-center justify-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -369,7 +370,7 @@ function Home() {
                  <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-dashed border-neutral-800/50 rounded-full"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] border border-dashed border-neutral-800/50 rounded-full"
                 >
                   {/* Badge 1: Experience */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -888,24 +889,24 @@ function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-neutral-950/45 backdrop-blur-md p-8 lg:p-12 rounded-[2.5rem] border border-white/5 shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
+              className="bg-neutral-950/45 backdrop-blur-md p-8 lg:p-12 rounded-none border border-white/5 shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
             >
                <form className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Name</label>
-                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all text-white focus:bg-white/[0.08]" placeholder="John Doe" />
+                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-none px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all text-white focus:bg-white/[0.08]" placeholder="John Doe" />
                     </div>
                     <div className="space-y-2">
                         <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Email</label>
-                        <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all text-white focus:bg-white/[0.08]" placeholder="john@example.com" />
+                        <input type="email" className="w-full bg-white/5 border border-white/10 rounded-none px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all text-white focus:bg-white/[0.08]" placeholder="john@example.com" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-neutral-500">Message</label>
-                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all resize-none text-white focus:bg-white/[0.08]" placeholder="Tell me about your project..." />
+                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-none px-4 py-3 placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-all resize-none text-white focus:bg-white/[0.08]" placeholder="Tell me about your project..." />
                   </div>
-                  <button className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                  <button className="w-full bg-white text-black font-bold py-4 rounded-none hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-[0.98]">
                     Send Message
                   </button>
                </form>
@@ -918,21 +919,35 @@ function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-neutral-800 bg-neutral-950">
-         <div className="max-w-7xl mx-auto px-4 text-center">
+      <footer className="py-12 border-t border-white/5 bg-neutral-950/45 backdrop-blur-md relative overflow-hidden">
+         <div className="max-w-7xl mx-auto px-4 text-center relative z-10 flex flex-col items-center">
+            {/* Scroll Up Button */}
+            <motion.button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              whileHover={{ y: -5, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+              whileTap={{ scale: 0.95 }}
+              className="mb-8 p-3 bg-white/5 border border-white/10 rounded-full text-white transition-colors duration-300 shadow-lg group"
+              title="Scroll to top"
+            >
+              <ArrowUp className="w-5 h-5 group-hover:text-purple-300 transition-colors" />
+            </motion.button>
+
             <div className="flex justify-center gap-6 mb-8">
-              <a href="https://github.com/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
+              <a href="https://github.com/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 border border-white/10 rounded-full text-neutral-400 hover:text-white hover:border-white/20 hover:scale-110 transition-all duration-300" title="GitHub">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com/in/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
+              <a href="https://linkedin.com/in/laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 border border-white/10 rounded-full text-neutral-400 hover:text-white hover:border-white/20 hover:scale-110 transition-all duration-300" title="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:laurindocbenjamim@gmail.com" className="text-neutral-500 hover:text-white transition-colors">
+              <a href="https://youtube.com/@laurindocbenjamim" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 border border-white/10 rounded-full text-neutral-400 hover:text-white hover:border-white/20 hover:scale-110 transition-all duration-300" title="YouTube">
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a href="mailto:laurindocbenjamim@gmail.com" className="p-2 bg-white/5 border border-white/10 rounded-full text-neutral-400 hover:text-white hover:border-white/20 hover:scale-110 transition-all duration-300" title="Email">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
-            <p className="text-neutral-600 text-sm">
-              &copy; {new Date().getFullYear()} Laurindo C. Benjamim. Portions of this site are generated for portfolio demonstration.
+            <p className="text-neutral-500 text-xs tracking-wider uppercase">
+              &copy; {new Date().getFullYear()} Laurindo C. Benjamim. All rights reserved.
             </p>
          </div>
       </footer>
