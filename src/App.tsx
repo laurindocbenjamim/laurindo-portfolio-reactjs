@@ -39,7 +39,7 @@ const PROJECTS = [
   {
     title: "NutriSentinel AI",
     description: "Advanced smart health and wellness tracking platform that utilizes computer vision to automatically scan and analyze medical/reagent test strips. Instantly digitizes biometrics to deliver real-time hydration indexes, nutritional markers, and personalized AI-driven health optimization recommendations.",
-    demo: "https://nutrisentinel-ai.onrender.com",
+    demo: "https://nutrisentinelai-api.onrender.com",
     github: "https://github.com/laurindocbenjamim/nutri-sentinel-project/blob/main/SMARTurinalysis-main/README.md",
     tags: ["Python", "Computer Vision", "FastAPI", "AI Consultation", "HealthTech"],
     type: "AI / Health"
