@@ -101,7 +101,7 @@ CERTIFICATIONS
   };
 
   return (
-    <div className="min-h-screen bg-neutral-100 text-slate-900 font-sans py-4 sm:py-12 px-2 sm:px-4 print:bg-white print:py-0">
+    <div className="min-h-screen bg-transparent text-slate-900 font-sans py-4 sm:py-12 px-2 sm:px-4 print:bg-white print:py-0 relative z-10">
       <style>{`
         @media print {
           body { background: white !important; }

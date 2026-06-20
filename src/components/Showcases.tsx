@@ -143,7 +143,7 @@ export default function Showcases() {
   const project = projectsData[currentSlideIndex];
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center p-4 md:p-8">
+    <div className="min-h-screen bg-transparent text-neutral-100 flex items-center justify-center p-4 md:p-12 relative z-10">
       <div className="max-w-4xl w-full bg-neutral-900 rounded-3xl border border-neutral-800 shadow-2xl p-6 md:p-10 flex flex-col items-center">
         
         <div className="w-full mb-8 flex justify-between items-center border-b border-neutral-800 pb-4">

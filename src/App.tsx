@@ -26,6 +26,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import Showcases from "./components/Showcases";
 import Resume from "./components/Resume";
+import { CustomCursor, ClonedBackgroundShapes } from "./components/InteractiveDesign";
 
 const PROFILE_IMAGES = [
   "https://github.com/laurindocbenjamim/dev-images/blob/main/Laurindo.png?raw=true",
@@ -315,15 +316,14 @@ function Home() {
         id="hero" 
         className="pt-32 pb-20 overflow-hidden scroll-mt-16"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-primary/10 text-brand-primary rounded-full text-xs font-bold uppercase tracking-wider mb-6">
@@ -361,8 +361,7 @@ function Home() {
             <motion.div 
               className="relative aspect-square h-[320px] lg:h-[400px] mx-auto lg:ml-auto lg:mr-0 z-0 flex items-center justify-center"
               initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               {/* Circular Orbit Path (Desktop only) */}
@@ -513,7 +512,7 @@ function Home() {
 
       {/* Video Presentation Section */}
       <motion.section 
-        className="py-20 bg-neutral-900 text-white scroll-mt-16"
+        className="py-20 bg-black/60 backdrop-blur-sm border-t border-b border-neutral-900/50 text-white scroll-mt-16"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -547,7 +546,7 @@ function Home() {
       {/* Experience Section */}
       <motion.section 
         id="experience" 
-        className="py-24 relative bg-neutral-950 scroll-mt-16 overflow-hidden"
+        className="py-24 relative bg-black/40 backdrop-blur-md scroll-mt-16 overflow-hidden border-b border-white/5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -635,7 +634,7 @@ function Home() {
       {/* Projects Section */}
       <motion.section 
         id="projects" 
-        className="py-20 bg-neutral-900/50 scroll-mt-16"
+        className="py-20 bg-black/50 backdrop-blur-md scroll-mt-16 border-b border-white/5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -847,7 +846,7 @@ function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-neutral-950 text-white overflow-hidden relative scroll-mt-16">
+      <section id="contact" className="py-20 bg-black/60 backdrop-blur-md text-white overflow-hidden relative scroll-mt-16 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -965,97 +964,109 @@ export default function App() {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-brand-primary/20 transition-colors duration-500">
-      {!["/cv"].includes(location.pathname) && (
-        <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <Link to="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-black font-display font-bold text-lg">L</span>
-                </div>
-                <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
-              </Link>
-              
-              <div className="hidden md:flex items-center gap-8">
-                {navLinks.map((link) => (
-                  link.href.startsWith("/#") ? (
-                     <a 
-                      key={link.name} 
-                      href={link.href} 
-                      className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  ) : (
-                    <Link 
-                      key={link.name} 
-                      to={link.href} 
-                      className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  )
-                ))}
-                <a 
-                  href="#contact" 
-                  className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
-                >
-                  Hire Me
-                </a>
-              </div>
+    <div className="min-h-screen bg-black text-neutral-100 font-sans selection:bg-brand-primary/20 transition-colors duration-500 relative overflow-x-hidden">
+      {/* Dynamic interactive follower custom cursor */}
+      <CustomCursor />
 
-              <button 
-                className="md:hidden p-2 text-neutral-400 hover:text-white"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                {isMenuOpen ? <X /> : <Menu />}
-              </button>
-            </div>
-          </div>
+      {/* Cloned geometric design background shapes (from uploaded image) with deep violet mesh */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
+        <ClonedBackgroundShapes />
+      </div>
 
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
-              >
-                <div className="px-4 py-6 space-y-4">
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {!["/cv"].includes(location.pathname) && (
+          <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/40 backdrop-blur-md">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <Link to="/" className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <span className="text-black font-display font-bold text-lg">L</span>
+                  </div>
+                  <span className="font-display font-medium text-lg tracking-tight text-white">Benjamim.dev</span>
+                </Link>
+                
+                <div className="hidden md:flex items-center gap-8">
                   {navLinks.map((link) => (
-                     link.href.startsWith("/#") ? (
-                      <a 
+                    link.href.startsWith("/#") ? (
+                       <a 
                         key={link.name} 
-                        href={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block text-lg font-medium text-neutral-200 hover:text-white"
+                        href={link.href} 
+                        className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                       >
                         {link.name}
                       </a>
                     ) : (
                       <Link 
                         key={link.name} 
-                        to={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block text-lg font-medium text-neutral-200 hover:text-white"
+                        to={link.href} 
+                        className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                       >
                         {link.name}
                       </Link>
                     )
                   ))}
+                  <a 
+                    href="#contact" 
+                    className="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
+                  >
+                    Hire Me
+                  </a>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </nav>
-      )}
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/showcases" element={<Showcases />} />
-        <Route path="/cv" element={<Resume />} />
-      </Routes>
+                <button 
+                  className="md:hidden p-2 text-neutral-400 hover:text-white"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                  {isMenuOpen ? <X /> : <Menu />}
+                </button>
+              </div>
+            </div>
+
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="md:hidden bg-neutral-900 border-b border-neutral-800 overflow-hidden"
+                >
+                  <div className="px-4 py-6 space-y-4">
+                    {navLinks.map((link) => (
+                       link.href.startsWith("/#") ? (
+                        <a 
+                          key={link.name} 
+                          href={link.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block text-lg font-medium text-neutral-200 hover:text-white"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link 
+                          key={link.name} 
+                          to={link.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block text-lg font-medium text-neutral-200 hover:text-white"
+                        >
+                          {link.name}
+                        </Link>
+                      )
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </nav>
+        )}
+
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/showcases" element={<Showcases />} />
+            <Route path="/cv" element={<Resume />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
